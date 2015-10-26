@@ -140,7 +140,6 @@ return [
         /*
          * Application Service Providers...
          */
-        App\LanguageDetectorServiceProvider::class,
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
         App\Providers\EventServiceProvider::class,
