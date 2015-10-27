@@ -66,4 +66,8 @@ class AuthController extends Controller
 
         return $user;
     }
+    public function loginPath()
+    {
+        return property_exists($this, 'loginPath') ? $this->loginPath : route('login');
+    }
 }
