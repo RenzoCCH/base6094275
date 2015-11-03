@@ -11,6 +11,9 @@
 <body>
 
     <main class="container-fluid">
+      @can('auth')
+      @include('home.partials.navbar')
+      @endcan
       @yield('content')
     </main>
 </body>

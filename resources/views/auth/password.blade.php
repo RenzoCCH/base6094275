@@ -1,23 +1,21 @@
 @extends('layout')
 
 @section('content')
-    <main >
-        @if (count($errors) > 0)
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-        @endif
-         <section >
+    <section class="row">
+        <div class="col-xs-8 col-sm-6 col-md-4 col-lg-2 col-xs-offset-2 col-sm-offset-3 col-md-offset-4 col-lg-offset-5">
+             @include('auth.partials.errors')
              <form method="POST" action="/password/email">
                 {!! csrf_field()!!}
-                <input name="email" type="email" id="email" placeholder="{{trans('validation.attributes.email')}}" value="{{old('email')}}">
-                <button type="submmit" >
-                    {{trans('auth.send_password_reset')}}
-                </button>
+                <div class="form-group">
+                    <input name="email" type="email" class="form-control" id="email" placeholder="{{trans('validation.attributes.email')}}" value="{{old('email')}}">
+                   </div>
+                <div class="form-group">
+                    <button type="submmit" class="btn btn-primary btn-block">
+                        {{trans('auth.send_password_reset')}}
+                    </button>
+                </div>
              </form>
              <a href="{{route('login')}}">{{trans("auth.login")}}</a>
-         </section>
-    </main>
+         </div>
+    </section>
 @stop

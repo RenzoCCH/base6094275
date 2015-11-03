@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Contracts\Auth\Access\Gate as GateContract;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+use Illuminate\Support\Facades\Request;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -29,5 +30,13 @@ class AuthServiceProvider extends ServiceProvider
         $gate->define('crud-users',function(){
             return \Auth::user()->isAdmin();
         });
+		$gate->define('auth',function(){
+			return \Auth::check();
+		});
+		$gate->define('home',function(){
+			return (Request::path()==='/'?true:false	);
+		});
+
     }
 }
+
