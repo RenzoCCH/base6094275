@@ -19,8 +19,8 @@
       @yield('content')
     </main>
 
-     {!! Html::script('assets/js/jquery-1.11.3.min.js')!!}
-     {!! Html::script('assets/lib/angular.min.js')!!}
+     {!! Html::script('bower_components/jquery/dist/jquery.min.js')!!}
+     {!! Html::script('bower_components/angular/angular.js')!!}
      {!! Html::script('assets/app/app.js')!!}
 </body>
 </html>
