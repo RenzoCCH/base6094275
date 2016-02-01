@@ -1,0 +1,315 @@
+.link-color
+{
+  color: $letter-color;
+  cursor: pointer;
+  @include transition(all ease 1s);
+  &:hover
+  {
+    color: $letter-color-blue;
+  }
+}
+.link-color-black
+{
+  color: $letter-color-blue;
+  cursor: pointer;
+  @include transition(all ease 1s);
+  &:hover
+  {
+    color: $letter-color;
+  }
+}
+.container-fluid, body {
+	background-color: transparent !important;
+}
+.container-fluid
+{
+	z-index: 2;
+}
+
+/*--------------------------------general--------------------------------*/
+/*--------------------normal day-----------------------------*/
+.dia, .noche, .dialluvioso {
+		min-height: 100%;
+		overflow-x: hidden;
+  @include background-image(linear-gradient($colorsky__day--top, $colorsky__day--bottom));
+}
+.cloud1 {
+		@include setcloud-dimension(10px,100px,200px,60px);
+		background: $cloud__day;
+		@include border-radius(200px);
+		&::before,&::after {
+			content: '';
+			background: $cloud__day;
+			@include setcloud-dimension(10px,-15px,100px,80px);
+			@include border-radius(100px);
+			@include transform(rotate(30deg));
+		}
+		&::after {
+			@include setcloud-dimension(auto,-55px,120px,120px);
+			right: 15px;
+		}
+		@include into-sm()
+		{
+				width: 150px;height: 45px;
+				&::before,&::after {
+				width: 75px; height: 60px;
+				}
+				&::after {
+				width: 90px; height: 90px;
+				}
+		}
+		@include into-xs()
+		{
+			width: 100px;height: 30px;
+			&::before,&::after{
+				width: 50px; height: 40px;
+				top: -15px; left: 7px;
+			}
+			&::after {
+				width: 60px; height: 60px;
+				top: -30px; left: 23px;
+			}
+		}
+	}
+.cloud2 {
+	@include setcloud-dimension(10px,100px,200px,60px);
+	background: $cloud__day;
+	@include border-radius(200px);
+	&::before, &::after{
+		content: '';
+		background: $cloud__day;
+		@include setcloud-dimension(10px,-40px,100px,80px);
+		@include border-radius(100px);
+		@include transform(rotate(120deg));
+	}
+	&::after
+	{
+		@include setcloud-dimension(auto,-30px,70px,70px);
+		right: 35px;
+	}
+	@include into-sm()
+	{
+		width: 150px; height: 40px;
+			&::before, &::after{
+			width: 75px; height:60px;
+		}
+			&::after{
+			width: 52px; height: 52px;
+		}
+	}
+	@include into-xs()
+	{
+		width: 100px;	height: 30px;
+		&::before, &::after{
+			width: 50px; height: 40px;
+			top: -20px; left: 10px;
+		}
+		&::after {
+			width: 35px; height: 35px;
+			top: -20px; left: 40px;
+		}
+	}
+}
+.cloud3 {
+	@include setcloud-dimension(10px,100px,200px,50px);
+	background: $cloud__day;
+	@include border-radius(200px);
+	&:before,&:after{
+		content: '';
+		@include setcloud-dimension(10px,-30px,80px,80px);
+		background: $cloud__day;
+		@include border-radius(100px);
+	}
+	&:after {
+		@include setcloud-dimension(60px,-60px,110px,110px);
+	}
+	@include into-sm()
+	{
+		width: 150px;
+		height: 37px;
+		&:before,&:after{
+			width: 60px; height: 60px;
+		}
+		&:after {
+			width: 82px; height: 82px;
+		}
+	}
+	@include into-xs()
+	{
+		width: 100px;height: 25px;
+		&:before,&:after{
+			width: 50px; height: 20px;
+			top: -10px; left: 20px;
+		}
+		&:after {
+			width: 50px; height: 50px;
+			top: -25px; left: 45px;
+		}
+	}
+}
+@include keyframes(moveclouds)
+{
+	0%{ margin-left: 0%;opacity: 0}
+	4% {opacity: 1}
+	48% {opacity: 1}
+	50% {margin-left: -50%;opacity: 0}
+	50.01% {margin-left: 50%;opacity: 0}
+	52%{opacity: 1}
+	97% {opacity: 1}
+	100%{margin-left: 0%;opacity: 0}
+}
+@include keyframes(movecloudsback)
+{
+	0% {margin-left: 0%;opacity: 1}
+	25% {opacity: 0.6}
+	50% {opacity: 1;}
+	50.01% {opacity: 1;}
+	75% {opacity: 0.6}
+	100%{margin-left: -205%;}
+}
+/*---------sun-----------*/
+.sun {
+width: 7vw;
+height: 7vw;
+background: $sun;
+@include border-radius(100%);
+z-index: -2;
+position: fixed;
+top:5vw; left: 90vw;
+animation:sunpulse 2s alternate infinite;
+@include into-xs()
+	{
+			width: 12vw; height: 12vw;
+	}
+}
+
+@include keyframes(sunpulse)
+{
+	0% { box-shadow: 0 0 100px $sun, 0 0 100px $sun; }
+	100% { box-shadow: 0 0 10px $sun, 0 0 75px $sun; }
+}
+/*-------------------------for ngiht---------------------------*/
+/*--------------------normal day-----------------------------*/
+.noche {
+	@include background-image(linear-gradient($colorsky__night--top, $colorsky__night--bottom));
+}
+.star{
+width: 2px;
+height: 2px;
+background: $star;
+z-index: -1;
+@include border-radius(2px);
+position: fixed;
+}
+.cloudnight, .cloudnight:before, .cloudnight:after
+{
+	background-color: $cloud__night;
+}
+
+.moon,.moon:before{
+				content: "";
+    width: 6vw;
+    height:	6vw;
+    background-color: $moon;
+    border-radius: 100%;
+    position: fixed;
+				top:5vw; left: 90vw;
+				z-index: -2;
+				box-shadow: 5px 0px 20px 0 $moon;
+}
+
+.moon{
+	@include transform(rotate(30deg));
+}
+.moon:before{
+    left: -25%;
+    top: 0%;
+				width: 6.5vw;
+    height:	6.5vw;
+				border-radius: 50%;
+				background-color: #000;
+				box-shadow:inset -15px 0 11px -7px  #c7cbd0;
+				@include transform(rotate(-6deg));
+}
+/*-------------for snow-----------------------*/
+.snow1, .snow2, .snow3 {
+	z-index: -1;
+	color:$snow;
+	position: fixed;
+	font-size: 1vw;
+	animation:snowfall1 5s linear infinite;
+	opacity: 0;
+	cursor:default;
+}
+.snow2{
+	 font-size: 1.2vw;
+}
+.snow3{
+	 font-size: 1.5vw;
+}
+@include keyframes(snowfall1)
+{
+	0% {margin-top: 0vh;margin-left: 0vw;opacity: 0}
+	5% {opacity: 1}
+	20%{margin-left: 1vw;opacity: 1}
+	40%{opacity: 1;margin-left: -1vw;}
+	60%{margin-left: 1vw;}
+	80%{margin-left: -1vw;}
+	100%{margin-top: 70vh;opacity: 0;margin-left: 0vw;}
+}
+@include keyframes(snowfall2)
+{
+	0% {margin-top: 0vh;margin-left: 0vw;opacity: 0}
+	5% {opacity: 1}
+	20%{margin-left: -1vw;opacity: 1}
+	40%{opacity: 1;margin-left: 1vw;}
+	60%{margin-left: -1vw;}
+	80%{margin-left: 1vw;}
+	100%{margin-top: 70vh;opacity: 0;margin-left: 0vw;}
+}
+//------------------rain day------------------------------------
+.cloudrain, .cloudrain:before, .cloudrain:after
+{
+	background-color: $cloud__rain;
+}
+.dialluvioso {
+	@include background-image(linear-gradient($colorsnow__day--top, $colorsnow__day--bottom));
+}
+.drop {
+ background:-webkit-gradient(linear,0% 0%,0% 100%, from(rgba(0,217,217,1) ), to(rgba(255,255,255,0.6))  );
+ background: -moz-linear-gradient(top, rgba(13,52,58,1) 0%, rgba(255,255,255,.6) 100%);
+	width:1px;
+	height:40px;
+	left:100px;
+	z-index: -1;
+	position: fixed;
+	opacity: 0;
+	-webkit-animation: fall 1s linear infinite;
+	-moz-animation: fall 1s  linear infinite;
+	-o-animation: fall 1s  linear infinite;
+}
+.dropstorm {
+	@extend .drop;
+	@include transform(rotate(-6deg));
+	-webkit-animation: fallhardrain 1s linear infinite;
+	-moz-animation: fallhardrain 1s  linear infinite;
+	-o-animation: fallhardrain 1s  linear infinite;
+}
+/* animate the drops*/
+@include keyframes(fall)
+{
+	from{opacity: 1;}
+	to {margin-top:70vh;}
+}
+@include keyframes(fallhardrain)
+{
+	from{opacity: 1;}
+	to {margin-top:70vh;margin-left:7vh;}
+}
+.trueno{
+ background:$thunder;
+	z-index: -3;
+	position: fixed;
+ box-shadow: 0px 0px 25px 2px $thunder;
+	@include border-radius(3px);
+}

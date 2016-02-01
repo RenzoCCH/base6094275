@@ -1,0 +1,11 @@
+@mixin setfadein($time){
+  @include animation(fadein $time);
+}
+.fadein{
+  @include animation(fadein 2s);
+}
+@include keyframes(fadein)
+{
+from { opacity: 0; }
+to   { opacity: 1; }
+}

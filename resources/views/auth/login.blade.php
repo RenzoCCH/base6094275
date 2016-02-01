@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('content')
-    <section class="row">
+    <section class="row padding-login" >
         <div class="col-xs-8 col-sm-6 col-md-4 col-lg-2 col-xs-offset-2 col-sm-offset-3 col-md-offset-4 col-lg-offset-5">
            @include('auth.partials.errors')
             <form method="POST" action="{{route('login')}}">
@@ -13,9 +13,11 @@
                     <input name='password' type="password" id="password" class="form-control" placeholder="{{trans('validation.attributes.password')}}">
                </div>
                <div class="form-group">
+                <proto-element>
                    <button type="submmit" class="btn btn-primary btn-block" >
                       {{trans('auth.login')}}
                    </button>
+                </proto-element>
                </div>
             </form>
             <ul class="list-inline">
@@ -26,6 +28,7 @@
                     <a href="password/email">{{trans('auth.forgot_password')}}</a>
                 </li>
             </ul>
+
         </div>
     </section>
 @stop

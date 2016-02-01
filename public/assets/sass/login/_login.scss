@@ -1,0 +1,21 @@
+.padding-login
+{
+  padding-top: 12%;
+  @include into-xs(padding-top, 30%);
+  @include into-sm(padding-top, 15%);
+  @include into-xs-landscape(padding-top,20%);
+  @include setfadein(2s);
+}
+.login-options
+{
+  @include into-xs(position,fixed);
+  bottom: 0;
+}
+.register-padding
+{
+  padding-top: 10%;
+  @include into-xs(padding-top, 30%);
+  @include into-sm(padding-top, 10%);
+  @include into-xs-landscape(padding-top, 5%);
+  @include setfadein(2s);
+}
