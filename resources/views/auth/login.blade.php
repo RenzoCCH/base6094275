@@ -12,12 +12,10 @@
                <div class="form-group">
                     <input name='password' type="password" id="password" class="form-control" placeholder="{{trans('validation.attributes.password')}}">
                </div>
-               <div class="form-group">
-                <proto-element>
-                   <button type="submmit" class="btn btn-primary btn-block" >
+               <div class="form-group ">
+                   <button type="submmit" class="btn btn-primary btn-block center-block" is="button-loading">
                       {{trans('auth.login')}}
                    </button>
-                </proto-element>
                </div>
             </form>
             <ul class="list-inline">
