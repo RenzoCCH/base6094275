@@ -1,4 +1,5 @@
 @import "compass";
+@import "utilities/reset";
 // Import Bootstrap Compass integration
 @import "bootstrap-compass";
 
@@ -12,6 +13,7 @@
 //-------------for cross browser suport-------------------------------
 $browser-minimum-versions: ("chrome": null, "firefox": "4", "ie": "7", "safari": "6");
 ///------------import utilities-------------------
+
 @import "utilities/variables";
 @import "utilities/colors";
 @import "utilities/responsive__utilities";
