@@ -16,7 +16,6 @@ class HomeController extends Controller
 
     public function index()
     {
-        dd( getBrowserLocale());
         return view('home.home');
     }
 

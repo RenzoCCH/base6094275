@@ -1,28 +1,38 @@
 @extends('layout')
 
 @section('content')
-    <main >
-         <section >
+     <section class="row">
+        <div class="col-xs-8 col-sm-6 col-md-4 col-lg-2 col-xs-offset-2 col-sm-offset-3 col-md-offset-4 col-lg-offset-5">
             @include('auth.partials.errors')
             {!! Form::model(Auth::user(),['route'=>'user/update','method'=>'PUT']) !!}
                 {!! csrf_field() !!}
                 @include('auth.partials.fieldsPartials')
-                <button type="submit">{{trans("home.buttons.edit_button")}}</button>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-block">{{trans("home.buttons.edit_button")}}</button>
+                </div>
             {!! Form::close() !!}
-            <a href="{{route('login')}}">{{trans("auth.home")}}</a>
-         </section>
-    </main>
-    <main >
-         <section >
-            @include('auth.partials.errors',['errors' => $errors->password])
+        </div>
+     </section>
+     <section class="row">
+        <div class="col-xs-8 col-sm-6 col-md-4 col-lg-2 col-xs-offset-2 col-sm-offset-3 col-md-offset-4 col-lg-offset-5">
+             @include('auth.partials.errors',['errors' => $errors->password])
+             {!! Form::open(['route'=>'password/update','method'=>'PUT']) !!}
+                 {!! csrf_field() !!}
+                 <div class="form-group">
+                 {!! Form::password('current_password',['placeholder'=>trans("validation.attributes.current_password"),'class'=>'form-control']) !!}
+                 </div>
+                 <div class="form-group">
+                 {!! Form::password('new_password',['placeholder'=>trans("validation.attributes.new_password"),'class'=>'form-control']) !!}
+                 </div>
+                 <div class="form-group">
+                 {!! Form::password('new_password_confirmation',['placeholder'=>trans("validation.attributes.password_confirmation"),'class'=>'form-control']) !!}
+                 </div>
+                 <div class="form-group">
+                 <button type="submit" class="btn btn-primary btn-block">{{trans("home.buttons.edit_button")}}</button>
+                 </div>
+             {!! Form::close() !!}
+        </div>
 
-            {!! Form::open(['route'=>'password/update','method'=>'PUT']) !!}
-                {!! csrf_field() !!}
-                {!! Form::password('current_password',['placeholder'=>trans("validation.attributes.current_password")]) !!}
-                {!! Form::password('new_password',['placeholder'=>trans("validation.attributes.new_password")]) !!}
-                {!! Form::password('new_password_confirmation',['placeholder'=>trans("validation.attributes.password_confirmation")]) !!}
-                <button type="submit">{{trans("home.buttons.edit_button")}}</button>
-            {!! Form::close() !!}
-         </section>
-    </main>
+     </section>
+
 @stop

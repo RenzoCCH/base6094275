@@ -2,15 +2,18 @@
 @extends('layout')
 
 @section('content')
-    <main >
-         <section >
+    <section class="row">
+         <div class="col-xs-8 col-sm-6 col-md-4 col-lg-2 col-xs-offset-2 col-sm-offset-3 col-md-offset-4 col-lg-offset-5" >
            @include('auth.partials.errors')
            {!! Form::model($user, array('route' => array('admin.users.update', $user->id), 'method' => 'put')) !!}
                @include('auth.partials.fieldsPartials')
-               {!! Form::select('roles_id', $roles) !!}
-               <button type="submit">{{trans("home.buttons.edit_button")}}</button>
+               <div class="form-group">
+               {!! Form::select('roles_id',$roles, null ,array('class'=>'form-control')) !!}
+               </div>
+				<div class="form-group">
+                    <button  class="btn btn-block btn-primary" type="submit">{{trans("home.buttons.edit_button")}}</button>
+				</div>
            {!! Form::close() !!}
-           <a href="{{route('login')}}">{{trans("auth.home")}}</a>
-         </section>
-    </main>
+         </div>
+    </section>
 @stop

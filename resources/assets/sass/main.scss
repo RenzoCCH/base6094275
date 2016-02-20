@@ -1,0 +1,39 @@
+@import "compass";
+@import "utilities/reset";
+// Import Bootstrap Compass integration
+@import "bootstrap-compass";
+
+// Import custom Bootstrap variables
+@import "utilities/bootstrap-variables";
+
+// Import Bootstrap for Sass
+@import "bootstrap";
+
+
+//-------------for cross browser suport-------------------------------
+$browser-minimum-versions: ("chrome": null, "firefox": "4", "ie": "7", "safari": "6");
+///------------import utilities-------------------
+
+@import "utilities/variables";
+@import "utilities/colors";
+@import "utilities/responsive__utilities";
+@import "utilities/mixins";
+@import "utilities/animate";
+@import "background/background";
+
+///-------------------modules---------------------
+@import "login/_login";
+
+
+.k-tooltip
+{
+  background-color: #fcf8e3;
+  color:#8a6d3b;
+  border-color: #faf2cc;
+  display: block;
+  padding: 1px;
+  text-align: center;
+  margin-top: 3px;
+  @include setfadein(2s);
+  @include border-radius(4px);
+}
