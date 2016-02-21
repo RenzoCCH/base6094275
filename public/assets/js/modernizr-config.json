@@ -5,6 +5,8 @@
   ],
   "feature-detects": [
     "test/css/all",
-    "test/network/connection"
+    "test/network/connection",
+    "test/css/animations",
+      "test/css/gradients"
   ]
 }

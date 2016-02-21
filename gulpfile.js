@@ -40,7 +40,7 @@ gulp.task('bower-concat', function() {
 
 
 gulp.task('headscripts', function() {
-    return gulp.src(['public/assets/js/modernizr-custom.js', 'public/bower_components/webcomponentsjs/webcomponents.min.js'])
+    return gulp.src(['public/assets/js/modernizr.js', 'public/bower_components/webcomponentsjs/webcomponents.min.js'])
         .pipe(concat('header.min.js'))
         .pipe(gulp.dest('public/assets/dist/'));
 });

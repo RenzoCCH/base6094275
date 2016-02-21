@@ -1,4 +1,5 @@
-app.controller('backgroundController', ['$scope', function($scope) {
+
+app.controller('backgroundController', ['$scope','Modernizr','screenWidthService', function($scope  , Modernizr,screenWidthService) {
     function changeLetterColor() {
         var cols = $('.link-color');
         var length = cols.length;
@@ -9,139 +10,213 @@ app.controller('backgroundController', ['$scope', function($scope) {
     function makerainthunderday()
     {
         $('html').addClass("dialluvioso");
-        var cloudsnumber;
-        if(979<$( window ).width()){ cloudsnumber=8;var rain= new Rain(150,'dropstorm');}
-        else if (767<$( window ).width()<980){ cloudsnumber=6;var rain= new Rain(100,'dropstorm');}
-        else {cloudsnumber=4;var rain= new Rain(50,'dropstorm');}
-        for (i = 0; i < cloudsnumber; i++) {
-            var  cloud= new CloudRain();
-            $('body').append(cloud.getCloud());
+        if (Modernizr.cssall) {
+            var cloudsnumber;
+            if (screenWidthService == 'md' || screenWidthService == 'lg') {
+                cloudsnumber = 8;
+                var rain = new Rain(150, 'dropstorm');
+            }
+            else if (screenWidthService == 'sm') {
+                cloudsnumber = 6;
+                var rain = new Rain(100, 'dropstorm');
+            }
+            else {
+                cloudsnumber = 4;
+                var rain = new Rain(50, 'dropstorm');
+            }
+            for (i = 0; i < cloudsnumber; i++) {
+                var cloud = new CloudRain();
+                $('body').append(cloud.getCloud());
+            }
+            addThunder(cloudsnumber);
         }
-        addThunder(cloudsnumber);
         changeLetterColor();
     }
-
-
-
     function makerainthundernight()
     {
         $('html').addClass("noche");
-        var cloudsnumber;
-        if(979<$( window ).width()){ cloudsnumber=8;var rain= new Rain(150,'dropstorm');}
-        else if (767<$( window ).width()<980){ cloudsnumber=6;var rain= new Rain(100,'dropstorm');}
-        else {cloudsnumber=4;var rain= new Rain(50,'dropstorm');}
-        for (i = 0; i < cloudsnumber; i++) {
-            var  cloud= new CloudRain();
-            $('body').append(cloud.getCloud());
+        if (Modernizr.cssall) {
+            var cloudsnumber;
+            if (screenWidthService == 'md' || screenWidthService == 'lg') {
+                cloudsnumber = 8;
+                var rain = new Rain(150, 'dropstorm');
+            }
+            else if (screenWidthService == 'sm') {
+                cloudsnumber = 6;
+                var rain = new Rain(100, 'dropstorm');
+            }
+            else {
+                cloudsnumber = 4;
+                var rain = new Rain(50, 'dropstorm');
+            }
+            for (i = 0; i < cloudsnumber; i++) {
+                var cloud = new CloudRain();
+                $('body').append(cloud.getCloud());
+            }
+            var moon = new Moon();
+            $('body').append(moon.getSun());
+            addThunder(cloudsnumber);
         }
-        var  moon= new Moon();
-        $('body').append(moon.getSun());
-        addThunder(cloudsnumber);
     }
     function makerainnight()
     {
         $('html').addClass("noche");
-        var cloudsnumber;
-        if(979<$( window ).width()){ cloudsnumber=12;var rain= new Rain(200,'drop');}
-        else if (767<$( window ).width()<980){ cloudsnumber=8;var rain= new Rain(100,'drop');}
-        else {cloudsnumber=4;var rain= new Rain(50,'drop');}
-        for (i = 0; i < cloudsnumber; i++) {
-            var  cloud= new CloudRain();
-            $('body').append(cloud.getCloud());
+        if (Modernizr.cssall) {
+            var cloudsnumber;
+            if (screenWidthService == 'md' || screenWidthService == 'lg') {
+                cloudsnumber = 12;
+                var rain = new Rain(200, 'drop');
+            }
+            else if (screenWidthService == 'sm') {
+                cloudsnumber = 8;
+                var rain = new Rain(100, 'drop');
+            }
+            else {
+                cloudsnumber = 4;
+                var rain = new Rain(50, 'drop');
+            }
+            for (i = 0; i < cloudsnumber; i++) {
+                var cloud = new CloudRain();
+                $('body').append(cloud.getCloud());
+            }
+            var moon = new Moon();
         }
-        var  moon= new Moon();
         $('body').append(moon.getSun());
     }
     function makerainday()
     {
         $('html').addClass("dialluvioso");
-
-
-        var cloudsnumber;
-        if(979<$( window ).width()){ cloudsnumber=12;var rain= new Rain(200,'drop');}
-        else if (767<$( window ).width()<980){ cloudsnumber=8;var rain= new Rain(100,'drop');}
-        else {cloudsnumber=4;var rain= new Rain(50,'drop');}
-        for (i = 0; i < cloudsnumber; i++) {
-            var  cloud= new CloudRain();
-            $('body').append(cloud.getCloud());
+        if (Modernizr.cssall) {
+            var cloudsnumber;
+            if (screenWidthService == 'md' || screenWidthService == 'lg') {
+                cloudsnumber = 12;
+                var rain = new Rain(200, 'drop');
+            }
+            else if (screenWidthService == 'sm') {
+                cloudsnumber = 8;
+                var rain = new Rain(100, 'drop');
+            }
+            else {
+                cloudsnumber = 4;
+                var rain = new Rain(50, 'drop');
+            }
+            for (i = 0; i < cloudsnumber; i++) {
+                var cloud = new CloudRain();
+                $('body').append(cloud.getCloud());
+            }
         }
         changeLetterColor();
     }
     function makesnownight()
     {
         $('html').addClass("noche");
-        var snownumber;
-        var cloudsnumber;
-        if(979<$( window ).width()){ snownumber=150;cloudsnumber=12;}
-        else if (767<$( window ).width()<980){ snownumber=100;cloudsnumber=8;}
-        else {snownumber=60;cloudsnumber=4;}
-        for (i = 0; i < snownumber; i++) {
-            var  snow= new Snow();
-            $('body').append(snow.getSnow());
+        if (Modernizr.cssall) {
+            var snownumber;
+            var cloudsnumber;
+            if (screenWidthService == 'md' || screenWidthService == 'lg') {
+                snownumber = 150;
+                cloudsnumber = 12;
+            }
+            else if (screenWidthService == 'sm') {
+                snownumber = 100;
+                cloudsnumber = 8;
+            }
+            else {
+                snownumber = 60;
+                cloudsnumber = 4;
+            }
+            for (i = 0; i < snownumber; i++) {
+                var snow = new Snow();
+                $('body').append(snow.getSnow());
+            }
+            for (i = 0; i < cloudsnumber; i++) {
+                var cloud = new CloudSnowNight();
+                $('body').append(cloud.getCloud());
+            }
+            var moon = new Moon();
+            $('body').append(moon.getSun());
         }
-        for (i = 0; i < cloudsnumber; i++) {
-            var  cloud= new CloudSnowNight();
-            $('body').append(cloud.getCloud());
-        }
-        var  moon= new Moon();
-        $('body').append(moon.getSun());
     }
     function makesnowday()
     {
         $('html').addClass("dia");
-        var snownumber;
-        var cloudsnumber;
-        if(979<$( window ).width()){ snownumber=150;cloudsnumber=12;}
-        else if (767<$( window ).width()<980){ snownumber=100;cloudsnumber=8;}
-        else {snownumber=60;cloudsnumber=4;}
-        for (i = 0; i < snownumber; i++) {
-            var  snow= new Snow();
-            $('body').append(snow.getSnow());
+        if (Modernizr.cssall) {
+            var snownumber;
+            var cloudsnumber;
+            if (screenWidthService=='md' || screenWidthService=='lg') {
+                snownumber = 150;
+                cloudsnumber = 12;
+            }
+            else if (screenWidthService=='sm') {
+                snownumber = 100;
+                cloudsnumber = 8;
+            }
+            else {
+                snownumber = 60;
+                cloudsnumber = 4;
+            }
+            for (i = 0; i < snownumber; i++) {
+                var snow = new Snow();
+                $('body').append(snow.getSnow());
+            }
+            for (i = 0; i < cloudsnumber; i++) {
+                var cloud = new CloudSnow();
+                $('body').append(cloud.getCloud());
+            }
+            var sun = new Sun();
+            $('body').append(sun.getSun());
         }
-        for (i = 0; i < cloudsnumber; i++) {
-            var  cloud= new CloudSnow();
-            $('body').append(cloud.getCloud());
-        }
-        var  sun= new Sun();
-        $('body').append(sun.getSun());
         changeLetterColor();
     }
     //------for night--------------------
     function makenight()
     {
         $('html').addClass("noche");
-        var starnumber;
-        var cloudsnumber;
-        if(979<$( window ).width()){ starnumber=80;cloudsnumber=5;}
-        else if (767<$( window ).width()<980){ starnumber=60;cloudsnumber=3;}
-        else {starnumber=40;cloudsnumber=2;}
-        for (i = 0; i < cloudsnumber; i++) {
-            var  cloud= new CloudNight();
-            $('body').append(cloud.getCloud());
+        if (Modernizr.cssall) {
+            var starnumber;
+            var cloudsnumber;
+            if (screenWidthService=='md' || screenWidthService=='lg') {
+                starnumber = 80;
+                cloudsnumber = 5;
+            }
+            else if (screenWidthService=='sm') {
+                starnumber = 60;
+                cloudsnumber = 3;
+            }
+            else {
+                starnumber = 40;
+                cloudsnumber = 2;
+            }
+            for (i = 0; i < cloudsnumber; i++) {
+                var cloud = new CloudNight();
+                $('body').append(cloud.getCloud());
+            }
+            for (i = 0; i < starnumber; i++) {
+                var star = new Star();
+                $('body').append(star.getStar());
+            }
+            var moon = new Moon();
+            $('body').append(moon.getSun());
         }
-        for (i = 0; i < starnumber; i++) {
-            var  star= new Star();
-            $('body').append(star.getStar());
-        }
-        var  moon= new Moon();
-        $('body').append(moon.getSun());
     }
     //-----------for day----------
     function makeday()
     {
         $('html').addClass("dia");
-        var cloudsnumber;
-        if(979<$( window ).width()) cloudsnumber=10;
-        else if (767<$( window ).width()<980) cloudsnumber=7;
-        else cloudsnumber=5;
+        if (Modernizr.cssall) {
+            var cloudsnumber;
+            if(screenWidthService=='md' || screenWidthService=='lg') cloudsnumber=10;
+            else if (screenWidthService=='sm') cloudsnumber=7;
+            else cloudsnumber=5;
 
 
-        for (i = 0; i < cloudsnumber; i++) {
-            var  cloud= new Cloud();
-            $('body').append(cloud.getCloud());
+            for (i = 0; i < cloudsnumber; i++) {
+                var  cloud= new Cloud();
+                $('body').append(cloud.getCloud());
+            }
+            var  sun= new Sun();
+            $('body').append(sun.getSun());
         }
-        var  sun= new Sun();
-        $('body').append(sun.getSun());
         changeLetterColor();
     }
 

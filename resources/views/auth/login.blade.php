@@ -20,10 +20,10 @@
             </form>
             <ul class="list-inline">
                 <li>
-                    <a href="{{route('register')}}">{{trans('auth.register')}}</a>
+                    <a href="{{route('register')}}" class="link-color">{{trans('auth.register')}}</a>
                 </li>
                 <li>
-                    <a href="password/email">{{trans('auth.forgot_password')}}</a>
+                    <a href="password/email" class="link-color">{{trans('auth.forgot_password')}}</a>
                 </li>
             </ul>
 
