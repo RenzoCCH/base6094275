@@ -4,6 +4,7 @@
     "setClasses"
   ],
   "feature-detects": [
-    "test/css/all"
+    "test/css/all",
+    "test/network/connection"
   ]
 }

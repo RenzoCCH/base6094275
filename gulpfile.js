@@ -30,7 +30,7 @@ gulp.task('compass', function() {
 gulp.task('scripts', ['headscripts','footerscripts']);
 
 gulp.task('bower-concat', function() {
-    return gulp.src(['public/bower_components/jquery/dist/jquery.min.js', 'public/angular/angular.min.js'])
+    return gulp.src(['public/bower_components/jquery/dist/jquery.min.js', 'public/bower_components/angular/angular.min.js'])
         .pipe(concat('bower.min.js'))
         .pipe(gulp.dest('public/assets/dist/'));
 });
@@ -58,6 +58,9 @@ gulp.task('uglifyapp', function() {
 gulp.task('watch', function(){
     gulp.watch('resources/assets/sass/**/*.scss', ['compass']);
     gulp.watch('resources/views/**/*.php',browserSync.reload);
+    gulp.watch('resources/app/**/*.js',['footerscripts'],browserSync.reload({
+        stream: true
+    }));
     // Other watchers
 })
 gulp.task('browserSync', function() {
