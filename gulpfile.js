@@ -1,7 +1,9 @@
 
 var gulp  = require('gulp');
 var compass = require('gulp-compass');
-var cssnano = require('gulp-cssnano');
+var minifyCss = require('gulp-minify-css');
+//var cssnano = require('gulp-cssnano');
+var minifyCss = require('gulp-minify-css');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 var browserSync = require('browser-sync').create();
@@ -18,7 +20,7 @@ gulp.task('compass', function() {
             sass: 'resources/assets/sass',
             cache: false
         }))
-        .pipe(cssnano())
+        .pipe(minifyCss())
         .pipe(gulp.dest('public/assets/css'))
         .pipe(browserSync.reload({
             stream: true
@@ -45,7 +47,8 @@ gulp.task('headscripts', function() {
 gulp.task('footerscripts',['uglifyapp'], function() {
     return gulp.src(['public/assets/dist/bower.min.js', 'public/assets/dist/uglifyapp.min.js'])
         .pipe(concat('all.min.js'))
-        .pipe(gulp.dest('public/assets/dist/'));
+        .pipe(gulp.dest('public/assets/dist/'))
+        .pipe(browserSync.reload({ stream: true}));
 });
 gulp.task('uglifyapp', function() {
     return gulp.src( 'resources/assets/app/**/*.js')
@@ -58,9 +61,7 @@ gulp.task('uglifyapp', function() {
 gulp.task('watch', function(){
     gulp.watch('resources/assets/sass/**/*.scss', ['compass']);
     gulp.watch('resources/views/**/*.php',browserSync.reload);
-    gulp.watch('resources/app/**/*.js',['footerscripts'],browserSync.reload({
-        stream: true
-    }));
+    gulp.watch('resources/assets/app/**/*.js',['footerscripts']);
     // Other watchers
 })
 gulp.task('browserSync', function() {
