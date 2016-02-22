@@ -15,7 +15,7 @@
     {{--adding polymeer dom--}}
     <link rel="import" href="{{url()}}/elements/button-loading.html">
 </head>
-<body>
+<body ng-controller="backgroundController">
 
     <main class="container-fluid">
       @can('auth')
