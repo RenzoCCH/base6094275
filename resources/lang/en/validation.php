@@ -94,7 +94,7 @@ return [
     'custom' => [
         'attribute-name' => [
             'rule-name' => 'custom-message',
-
+			'email' => 'Please enter a valid email'
         ],
     ],
 

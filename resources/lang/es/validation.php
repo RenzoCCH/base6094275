@@ -93,6 +93,7 @@ return [
     'custom' => [
         'attribute-name' => [
             'rule-name' => 'custom-message',
+            'email' => 'El correo no es valido',
         ],
     ],
 

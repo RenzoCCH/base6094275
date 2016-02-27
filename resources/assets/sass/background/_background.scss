@@ -6,6 +6,7 @@
   &:hover
   {
     color: $letter-color-blue;
+    text-decoration: none;
   }
 }
 .link-color-black
@@ -16,6 +17,7 @@
   &:hover
   {
     color: $letter-color;
+    text-decoration: none;
   }
 }
 .container-fluid, body {

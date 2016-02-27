@@ -1,4 +1,4 @@
-@mixin setfadein($time){
+@mixin setfadein($time:2s){
   @include animation(fadein $time);
 }
 .fadein{

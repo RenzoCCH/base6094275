@@ -1,0 +1,13 @@
+span.error
+{
+  @include setfadein();
+  width: 100%;
+  @include border-radius(4px);
+  display: block;
+  background-color: $warning-notification;
+  border-color: $warning-borde-notification;
+  color: $warning-letter-color-notification;
+  padding: 1px;
+  text-align: center;
+  margin-top: 3px;
+}
