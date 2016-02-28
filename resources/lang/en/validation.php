@@ -93,8 +93,8 @@ return [
 
     'custom' => [
         'attribute-name' => [
-            'rule-name' => 'custom-message',
-
+            'password' => 'Password is required',
+			'email' => 'Please enter a valid email'
         ],
     ],
 

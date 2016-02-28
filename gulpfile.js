@@ -32,7 +32,7 @@ gulp.task('compass', function() {
 gulp.task('scripts', ['headscripts','footerscripts']);
 
 gulp.task('bower-concat', function() {
-    return gulp.src(['public/bower_components/jquery/dist/jquery.min.js', 'public/bower_components/angular/angular.min.js'])
+    return gulp.src(['public/bower_components/jquery/dist/jquery.min.js', 'public/bower_components/angular/angular.min.js','public/bower_components/jquery-validation/dist/jquery.validate.min.js'])
         .pipe(concat('bower.min.js'))
         .pipe(gulp.dest('public/assets/dist/'));
 });

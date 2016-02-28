@@ -1,5 +1,22 @@
-input[type=search], input[type=text], button {
+input[type=search], input[type=text], button{
   -webkit-appearance: none;
   appearance: none;
   outline: none !important;
+}
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px white inset;
+}
+.nopadding
+{
+  padding: 0 !important;
+}
+
+//********************** bootstrap disabled********************************
+.btn
+{
+  &[disabled]
+  {
+    cursor: inherit !important;
+    opacity: 1 !important;
+  }
 }

@@ -12,6 +12,7 @@
   "dependencies": {
     "jquery": "^2.2.0",
     "angular": "^1.4.9",
-    "polymer":"Polymer/polymer#^1.2.0"
+    "polymer": "Polymer/polymer#^1.2.0",
+    "jquery-validation": "^1.15.0"
   }
 }

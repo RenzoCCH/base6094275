@@ -92,7 +92,8 @@ return [
 
     'custom' => [
         'attribute-name' => [
-            'rule-name' => 'custom-message',
+            'password' => 'La contraseña es requerida',
+            'email' => 'El correo no es valido',
         ],
     ],
 
