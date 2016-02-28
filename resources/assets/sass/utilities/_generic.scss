@@ -1,4 +1,4 @@
-span.error
+.warning
 {
   @include setfadein();
   width: 100%;
@@ -10,4 +10,11 @@ span.error
   padding: 1px;
   text-align: center;
   margin-top: 3px;
+  margin-bottom: 3px;
+  ul{
+    margin-bottom: 0px;
+  }
+}
+span.error {
+  @extend .warning;
 }

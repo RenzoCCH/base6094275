@@ -258,26 +258,34 @@
             loadingColor: String,
             pressed: {
                 type: Boolean,
-                value: false,
-                notify: true,
-                reflectToAttribute: true
-            }
+                value:false,
+                observer:'_loadingStyle'
+            },
+	        disabled: {
+		        type: Boolean,
+		        value:false,
+	        }
         },
-        listeners: {
-            'tap': 'press'
-        },
+//        listeners: {
+//            'tap': 'loadingStyle'
+//        },
         attached: function() {
             this.customStyle['--my-height'] = this.offsetHeight + "px";
             this.customStyle['--my-width'] = this.offsetWidth + "px";
             if(this.loadingColor) this.customStyle['--loading-color'] =this.loadingColor;
+	        this.customStyle['--my-height-press'] = this.offsetHeight + "px";
             this.updateStyles();
         },
-        press: function() {
-            if(!this.pressed)
+        _loadingStyle: function(newValue, oldValue) {
+            if(newValue)
             {
-                this.customStyle['--my-height-press'] = this.offsetHeight + "px";
                 this.updateStyles();
                 this.pressed = !this.pressed;
+	            this.disabled = true;
+            }
+	        else
+            {
+	            this.disabled = false;
             }
         }
     });
