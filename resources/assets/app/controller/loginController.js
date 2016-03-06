@@ -7,38 +7,45 @@ app.controller('loginController', ['$scope', function($scope) {
         $scope.state($scope.loginTab);
     });
     $scope.state = function(flag) {
+        //
         switch(flag) {
             case 'login':
+                loginValidator.resetForm();
                 $scope.login=true;
                 $scope.register=false;
                 $scope.password=false;
                 break;
             case 'register':
+                registerValidator.resetForm();
                 $scope.login=false;
                 $scope.register=true;
                 $scope.password=false;
                 break;
             case 'password':
+                passwordValidator.resetForm();
                 $scope.login=false;
                 $scope.register=false;
                 $scope.password=true;
                 break;
             default:
+                loginValidator.resetForm();
                 $scope.login=true;
                 $scope.register=false;
                 $scope.password=false;
                 break;
         }
     };
+    $scope.cleanAdvice = function() {
+        $('.advice').remove()
+    };
 
-
-    $("#login").validate({
+    var loginValidator=$("#login").validate({
         submitHandler: function(form) {
             $('#login_button').attr('pressed',true);
             form.submit();
         }
     });
-    $("#register-form").validate({
+    var registerValidator=$("#register-form").validate({
         rules: {
             email:{
              //check_email:true
@@ -66,7 +73,7 @@ app.controller('loginController', ['$scope', function($scope) {
             form.submit();
         }
     });
-    $("#password-form").validate({
+    var passwordValidator=$("#password-form").validate({
         submitHandler: function(form) {
             $('#password_button').attr('pressed',true);
             form.submit();

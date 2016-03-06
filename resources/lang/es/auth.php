@@ -20,6 +20,7 @@ return [
     'register'=>'Registrate',
     'forgot_password'=>'Olvide mi contraseña?',
     'reset_password'=>'Restablecer Contraseña',
+	'send_password_reset'=>'Restablecer Contraseña',
     'reset_password'=>'Enviar Restablecer Contraseña',
     'home'=>'Casa',
     'edit_user'=>'Configuración',

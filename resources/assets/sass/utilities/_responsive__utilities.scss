@@ -86,5 +86,11 @@
     @content;
   }
 }
+@mixin into-xs-sm($property: jx, $value: 0){
+  @media (max-width:$screen-sm-max) {
+    @if $property != jx { #{$property}: #{$value}; }
+    @content;
+  }
+}
 
 

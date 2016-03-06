@@ -25,20 +25,22 @@
     {
       width: 290px;
     }
-    margin: auto;
-
+    @include into-xs-sm()
+    {
+      margin: auto;
+    }
   }
   .center-container-options
   {
-    margin-left: 0;
-
-      position: absolute;
-      bottom: 0;
-      left: 0;
+      margin-left: 0;
       width: 100%;
       text-align: center;
-
-
+      @include into-xs-sm()
+      {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+      }
   }
 
 }
