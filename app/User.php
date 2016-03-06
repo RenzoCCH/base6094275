@@ -49,10 +49,10 @@ class User extends Model implements AuthenticatableContract,
 //        return $this->first_name.' '.$this->last_name;
 //    }
 
-    public function setPasswordAribute($value)
-    {
-        if(!empty($value)) $this->attributes['password']= bcrypt($value);
-    }
+//    public function setPasswordAttribute($value)
+//    {
+//        if(!empty($value)) $this->attributes['password']= bcrypt($value);
+//    }
 
     public function isAdmin()
     {

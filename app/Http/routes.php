@@ -9,7 +9,7 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-use Illuminate\Support\Facades\Mail;
+//use Illuminate\Support\Facades\Mail;
 
 Route::get('/','HomeController@index');
 Route::get('home','HomeController@index');
@@ -31,14 +31,18 @@ Route::get('logout', [
 ]);
 
 // ---------Registration routes...
-Route::get('register', [
-    'uses'=>'Auth\AuthController@getRegister',
-    'as'=>'register'
-]);
+//Route::get('register', [
+//    'uses'=>'Auth\AuthController@getRegister',
+//    'as'=>'register'
+//]);
 Route::post('register', [
     'uses'=>'Auth\AuthController@postRegister',
     'as'=>'register'
 ]);
+Route::post('register/emailverification', [
+	'uses'=>'Auth\AuthController@postEmailVerification',
+]);
+
 ///---------- this is for the user configuration
 Route::get('user/edition',[
     'uses'=>'UserController@editUser',
@@ -54,7 +58,7 @@ Route::put('password/update',[
 ]);
 
 // Password reset link request routes...
-Route::get('password/email', 'Auth\PasswordController@getEmail');
+//Route::get('password/email', 'Auth\PasswordController@getEmail');
 Route::post('password/email', 'Auth\PasswordController@postEmail');
 
 // Password reset routes...
@@ -70,8 +74,8 @@ Route::group(['prefix' => 'admin','namespace' => 'Admin','middleware'=>array('au
 
 // Sending Email
 //get('/email',function(){
-//    Mail::send('emails.test',['name'=>'Novica'],function($message)
-//    {
-//        $message->to('ren_cl@hotmail.com','me')->subject('Welcome');
-//    });
+//	Mail::send('emails.test',['name'=>'Novica'],function($message)
+//	{
+//		$message->to('ren_cl@hotmail.com','me')->subject('Welcome');
+//	});
 //});

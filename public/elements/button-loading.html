@@ -23,8 +23,8 @@
           -webkit-border-radius: 50%;
           -moz-border-radius: 50%;
           border-radius: 50%;
-          height:  var(--my-height-press, 50px);
-          width:  var(--my-height-press, 50px);
+          height:  var(--my-height-press, 34px);
+          width:  var(--my-height-press, 34px);
           -webkit-transition: all 0.5s;
           -moz-transition: all  0.5s;
           -ms-transition: all  0.5s;
@@ -273,10 +273,14 @@
             this.customStyle['--my-height'] = this.offsetHeight + "px";
             this.customStyle['--my-width'] = this.offsetWidth + "px";
             if(this.loadingColor) this.customStyle['--loading-color'] =this.loadingColor;
-	        this.customStyle['--my-height-press'] = this.offsetHeight + "px";
-            this.updateStyles();
+
+	        if(this.offsetHeight>0) this.customStyle['--my-height-press'] = this.offsetHeight + "px";
+	        else  this.customStyle['--my-height-press'] = "34px";
+
+	        this.updateStyles();
         },
-        _loadingStyle: function(newValue, oldValue) {
+	    _loadingStyle: function(newValue, oldValue) {
+
             if(newValue)
             {
                 this.updateStyles();
