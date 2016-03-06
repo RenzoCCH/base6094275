@@ -1,13 +1,13 @@
  @if(Session::has('message'))
-      <div class="alert alert-success list-group">
-           <ul>
+      <div class="advice success">
+           <ul class="list-unstyled">
                    <li> {{ Session::get('message') }}</li>
            </ul>
       </div>
  @endif
  @if(Session::has('edit_success'))
-     <div class="alert alert-success list-group">
-          <ul>
+     <div class="advice success">
+          <ul class="list-unstyled">
                   <li> {{ Session::get('edit_success') }}</li>
           </ul>
      </div>

@@ -1,28 +1,59 @@
-.login
+.center-container
 {
-  padding-top: 12%;
-  @include into-xs(padding-top, 30%);
-  @include into-sm(padding-top, 15%);
-  @include into-xs-landscape(padding-top,20%);
-  @include setfadein(2s);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 30px;
+  position: relative;
 
+  @include setfadein(2s);
+  @include into-xs-landscape()
+  {
+    padding-bottom: 30px;
+  }
   .advice
   {
-    position: absolute;
-    top: -50px;
+    margin-bottom: 15px;
 
   }
+  .center-container-form
+  {
+    width: 230px;
+    @include into-md-lg()
+    {
+      width: 290px;
+    }
+    margin: auto;
+
+  }
+  .center-container-options
+  {
+    margin-left: 0;
+
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      text-align: center;
+
+
+  }
+
 }
-.login-options
+.no-flexbox
 {
-  @include into-xs(position,fixed);
-  bottom: 0;
-}
-.register-padding
-{
-  padding-top: 10%;
-  @include into-xs(padding-top, 30%);
-  @include into-sm(padding-top, 10%);
-  @include into-xs-landscape(padding-top, 5%);
-  @include setfadein(2s);
+  .center-container
+  {
+
+    .center-container-form
+    {
+      padding-top: 12%;
+      @include into-xs(padding-top, 30%);
+      @include into-sm(padding-top, 15%);
+      @include into-xs-landscape(padding-top,20%);
+    }
+
+  }
 }

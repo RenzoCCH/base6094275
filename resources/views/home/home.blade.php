@@ -5,7 +5,7 @@
 
     <main class="row">
 		<div class="col-xs-12">
-		@include('home.partials.succed')
+            @include('generic.advices.succed')
 			{{trans('home.welcome', ['name' => Auth::user()->name])}}
 		</div>
     </main>

@@ -3,7 +3,7 @@ input[type=search], input[type=text], button{
   appearance: none;
   outline: none !important;
 }
-input:-webkit-autofill {
+input:-webkit-autofill,input:focus {
   -webkit-box-shadow: 0 0 0px 1000px white inset;
 }
 .nopadding
@@ -20,3 +20,5 @@ input:-webkit-autofill {
     opacity: 1 !important;
   }
 }
+//------------------------------for angular flash-----------------------------------
+[ng\:cloak], [ng-cloak], .ng-cloak { display: none; }

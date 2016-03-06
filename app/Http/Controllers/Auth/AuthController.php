@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Redirect;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
@@ -47,7 +50,10 @@ class AuthController extends Controller
             'password' => 'required|confirmed|min:6',
         ]);
     }
-
+	public function getLogin()
+	{
+		return view('auth.principalLogin',['loginTab' => 'login']);
+	}
     /**
      * Create a new user instance after a valid registration.
      *
@@ -66,8 +72,39 @@ class AuthController extends Controller
 
         return $user;
     }
+	///register a user
+	public function postRegister(Request $request)
+	{
+		$validator = $this->validator($request->all());
+
+		if ($validator->fails()) {
+			$request->session()->flash('loginTab', 'register');
+			$this->throwValidationException(
+				$request, $validator
+			);
+		}
+
+		Auth::login($this->create($request->all()));
+
+		return redirect($this->redirectPath());
+	}
+	//	--------------set the login path---------------
     public function loginPath()
     {
         return property_exists($this, 'loginPath') ? $this->loginPath : route('login');
     }
+	//	to verifi is thr email is unique
+	public function postEmailVerification(Request $request)
+	{
+		if($request->ajax()) {
+			if (User::where('email', '=', Input::get('email'))->exists()) {
+				return 'false';
+			}
+			else{
+				return 'true';
+			}
+		}
+		else return response('Unauthorized.', 401);
+	}
+
 }

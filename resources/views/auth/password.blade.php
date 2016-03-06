@@ -1,21 +1,16 @@
-@extends('layout')
+<form id="password-form" method="POST" action="/password/email" ng-show="password" class="fadein" ng-cloak >
+{!! csrf_field()!!}
+<div class="form-group">
+    <input name="email" type="email" class="form-control" id="email" required placeholder="{{trans('validation.attributes.email')}}" value="{{old('email')}}"
+    data-msg-required="{{trans('validation.custom.attribute-name.email')}}"
+    data-msg-remote="{{trans('passwords.user')}}"
+    >
+   </div>
+<div class="form-group">
+    <button id="password_button" type="submmit" class="btn btn-primary btn-block center-block"  is="button-loading">
+        {{trans('auth.send_password_reset')}}
+    </button>
+</div>
+</form>
 
-@section('content')
-    <section class="row">
-        <div class="col-xs-8 col-sm-6 col-md-4 col-lg-2 col-xs-offset-2 col-sm-offset-3 col-md-offset-4 col-lg-offset-5">
-             @include('auth.partials.errors')
-             <form method="POST" action="/password/email">
-                {!! csrf_field()!!}
-                <div class="form-group">
-                    <input name="email" type="email" class="form-control" id="email" placeholder="{{trans('validation.attributes.email')}}" value="{{old('email')}}">
-                   </div>
-                <div class="form-group">
-                    <button type="submmit" class="btn btn-primary btn-block">
-                        {{trans('auth.send_password_reset')}}
-                    </button>
-                </div>
-             </form>
-             <a href="{{route('login')}}">{{trans("auth.login")}}</a>
-         </div>
-    </section>
-@stop
+

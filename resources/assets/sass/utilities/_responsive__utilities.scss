@@ -80,32 +80,11 @@
   }
 }
 
-// $sizes: xs, sm, md, lg; // This order is ery important
-// $attrs: margin, margin-top, margin-bottom, margin-left, margin-right;
-// $cnt: 0px;
-
-
-// @each $attr in $attrs {
-//     $cnt : $cnt + $gutter;
-// }
-
-@mixin into-iphone4($property: jx, $value: 0){
-  @media only screen and (-webkit-min-device-pixel-ratio : 1.5), only screen and (min-device-pixel-ratio : 1.5) {
+@mixin into-md-lg($property: jx, $value: 0){
+  @media (min-width:$screen-md-min)  {
     @if $property != jx { #{$property}: #{$value}; }
     @content;
   }
 }
 
-@mixin into-iphone6($property: jx, $value: 0){
-  @media only screen and (max-device-width: 640px), only screen and (max-device-width: 667px), only screen and (max-width: 480px) and (orientation : portrait) {
-    @if $property != jx { #{$property}: #{$value}; }
-    @content;
-  }
-}
 
-@mixin into-iphone6-landscape($property: jx, $value: 0){
-  @media only screen and (max-device-width: 640px), only screen and (max-device-width: 667px), only screen and (max-width: 480px) and (orientation : landscape) {
-    @if $property != jx { #{$property}: #{$value}; }
-    @content;
-  }
-}
