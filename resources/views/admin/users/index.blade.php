@@ -4,7 +4,8 @@
 @section('content')
     <section class="row">
         <div class="col-xs-12">
-            @include('home.partials.succed')
+            @include('generic.advices.errors')
+            @include('generic.advices.succed')
 	        <table class="table table-striped">
 	            <tr>
 	                <th>
