@@ -1,6 +1,9 @@
-var app= angular.module('app', [])
-angular.module('myApp', []).config(function($interpolateProvider){
+var app = angular.module('app', []);
+
+app.config(function($interpolateProvider){
     $interpolateProvider.startSymbol('{[{').endSymbol('}]}');
+}).run(function ($rootScope) {
+    //$rootScope.backgroundAllowed = true;
 });
 app.constant("Modernizr", Modernizr);
 

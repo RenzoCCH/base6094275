@@ -40,7 +40,7 @@ gulp.task('bower-concat', function() {
 
 
 gulp.task('headscripts', function() {
-    return gulp.src(['public/assets/js/modernizr.js', 'public/bower_components/webcomponentsjs/webcomponents.min.js'])
+    return gulp.src(['public/assets/js/modernizr.js', 'public/bower_components/webcomponentsjs/webcomponents.min.js','public/assets/js/phaser.min.js'])
         .pipe(concat('header.min.js'))
         .pipe(gulp.dest('public/assets/dist/'));
 });
@@ -53,7 +53,7 @@ gulp.task('footerscripts',['uglifyapp'], function() {
 gulp.task('uglifyapp', function() {
     return gulp.src( 'resources/assets/app/**/*.js')
         .pipe(concat('uglifyapp.min.js'))
-        .pipe(uglify())
+     //  .pipe(uglify())
         .pipe(gulp.dest('public/assets/dist/'));
 });
 //--------------------------------------

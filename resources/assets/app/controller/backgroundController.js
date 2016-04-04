@@ -1,5 +1,5 @@
 
-app.controller('backgroundController', ['$scope','Modernizr','screenWidthService','ismobile', function($scope  , Modernizr,screenWidthService,ismobile) {
+app.controller('backgroundController', ['$scope','Modernizr','screenWidthService','ismobile','isBackgroundAllowed', function($scope, Modernizr,screenWidthService,ismobile,isBackgroundAllowed) {
     function changeLetterColor() {
         var cols = $('.link-color');
         var length = cols.length;
@@ -10,7 +10,7 @@ app.controller('backgroundController', ['$scope','Modernizr','screenWidthService
     function makerainthunderday()
     {
         $('html').addClass("dialluvioso");
-        if (Modernizr.cssall && !ismobile) {
+        if (isBackgroundAllowed) {
             var cloudsnumber;
             if (screenWidthService == 'md' || screenWidthService == 'lg') {
                 cloudsnumber = 8;
@@ -35,7 +35,7 @@ app.controller('backgroundController', ['$scope','Modernizr','screenWidthService
     function makerainthundernight()
     {
         $('html').addClass("noche");
-        if (Modernizr.cssall && !ismobile) {
+        if (isBackgroundAllowed) {
             var cloudsnumber;
             if (screenWidthService == 'md' || screenWidthService == 'lg') {
                 cloudsnumber = 8;
@@ -61,7 +61,7 @@ app.controller('backgroundController', ['$scope','Modernizr','screenWidthService
     function makerainnight()
     {
         $('html').addClass("noche");
-        if (Modernizr.cssall && !ismobile) {
+        if (isBackgroundAllowed ) {
             var cloudsnumber;
             if (screenWidthService == 'md' || screenWidthService == 'lg') {
                 cloudsnumber = 12;
@@ -86,7 +86,7 @@ app.controller('backgroundController', ['$scope','Modernizr','screenWidthService
     function makerainday()
     {
         $('html').addClass("dialluvioso");
-        if (Modernizr.cssall && !ismobile) {
+        if (isBackgroundAllowed) {
             var cloudsnumber;
             if (screenWidthService == 'md' || screenWidthService == 'lg') {
                 cloudsnumber = 12;
@@ -110,7 +110,7 @@ app.controller('backgroundController', ['$scope','Modernizr','screenWidthService
     function makesnownight()
     {
         $('html').addClass("noche");
-        if (Modernizr.cssall && !ismobile) {
+        if (isBackgroundAllowed) {
             var snownumber;
             var cloudsnumber;
             if (screenWidthService == 'md' || screenWidthService == 'lg') {
@@ -140,7 +140,7 @@ app.controller('backgroundController', ['$scope','Modernizr','screenWidthService
     function makesnowday()
     {
         $('html').addClass("dia");
-        if (Modernizr.cssall && !ismobile) {
+        if (isBackgroundAllowed) {
             var snownumber;
             var cloudsnumber;
             if (screenWidthService=='md' || screenWidthService=='lg') {
@@ -172,7 +172,7 @@ app.controller('backgroundController', ['$scope','Modernizr','screenWidthService
     function makenight()
     {
         $('html').addClass("noche");
-        if (Modernizr.cssall && !ismobile) {
+        if (isBackgroundAllowed) {
             var starnumber;
             var cloudsnumber;
             if (screenWidthService=='md' || screenWidthService=='lg') {
@@ -203,7 +203,7 @@ app.controller('backgroundController', ['$scope','Modernizr','screenWidthService
     function makeday()
     {
         $('html').addClass("dia");
-        if (Modernizr.cssall && !ismobile) {
+        if (isBackgroundAllowed) {
             var cloudsnumber;
             if(screenWidthService=='md' || screenWidthService=='lg') cloudsnumber=10;
             else if (screenWidthService=='sm') cloudsnumber=7;

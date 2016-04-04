@@ -9,7 +9,7 @@
     <title>Base</title>
     {!! Html::style('assets/css/main.css') !!}
 
-    {{--{!! Html::script('assets/js/modernizr-custom.js')!!}--}}
+    {{--{!! Html::script('assets/js/modernizr.js')!!}--}}
     {{--{!! Html::script('bower_components/webcomponentsjs/webcomponents.js')!!}--}}
     {!! Html::script('assets/dist/header.min.js')!!}
 
