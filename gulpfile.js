@@ -56,8 +56,14 @@ gulp.task('uglifyapp', function() {
      //  .pipe(uglify())
         .pipe(gulp.dest('public/assets/dist/'));
 });
-//--------------------------------------
-
+//---------------------for phaser games-----------------
+gulp.task('snakegame', function() {
+    return gulp.src( 'resources/assets/phaser/*.js')
+        .pipe(concat('snake.min.js'))
+        //  .pipe(uglify())
+        .pipe(gulp.dest('public/assets/dist/'));
+});
+//-----------------------
 gulp.task('watch', function(){
     gulp.watch('resources/assets/sass/**/*.scss', ['compass']);
     gulp.watch('resources/views/**/*.php',browserSync.reload);

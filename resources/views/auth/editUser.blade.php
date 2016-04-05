@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('content')
-     <section class="row center-container " ng-controller="loginController " ng-init="loginTab = '@if(Session::has('loginTab')){{ Session::get('loginTab')}}@endif'" >
+     <section class="row center-container" ng-controller="editUserController " ng-init="loginTab = " >
            <div class="center-container-form ">
                 @include('generic.advices.errors')
                 @include('generic.advices.succed')
