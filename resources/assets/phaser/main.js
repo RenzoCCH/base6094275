@@ -1,5 +1,5 @@
 var game,squareSize, speed,updateDelay,cursors, speedTextValue;
-var gameMode=2;
+var gameMode=3;
 
 var Menu = {
     preload: function()

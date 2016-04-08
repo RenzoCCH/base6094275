@@ -88,7 +88,9 @@ var Game_Over = {
 
     startGame: function () {
         // Change the state back to Game.
-        this.state.start('Game');
+        if(gameMode==1) this.state.start('Game');
+        if(gameMode==2) this.state.start('Game2');
+        if(gameMode==3) this.state.start('Gamem');
 
     }
 };

@@ -80,8 +80,9 @@ app.controller('backgroundController', ['$scope','Modernizr','screenWidthService
                 $('body').append(cloud.getCloud());
             }
             var moon = new Moon();
+            $('body').append(moon.getSun());
         }
-        $('body').append(moon.getSun());
+
     }
     function makerainday()
     {

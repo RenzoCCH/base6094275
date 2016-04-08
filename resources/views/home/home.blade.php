@@ -7,7 +7,6 @@
             @include('generic.advices.succed')
 			<span class="link-color">{{trans('home.welcome', ['name' => Auth::user()->name])}}</span>
 		</div>
-		@include('games.snake.snake')
+		{{--@include('games.snake.snake')--}}
     </main>
 @stop
-	

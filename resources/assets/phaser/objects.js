@@ -34,19 +34,19 @@ var Snake= function (player,skin,startPosition)
                 this.direction= 'right';
                 break;
             case 5:
-                this.startPositiony=90;
+                this.startPositiony=135;
                 this.direction= 'left';
                 break;
             case 6:
-                this.startPositiony=180;
+                this.startPositiony=225;
                 this.direction= 'left';
                 break;
             case 7:
-                this.startPositiony=270;
+                this.startPositiony=335;
                 this.direction= 'left';
                 break;
             case 8:
-                this.startPositiony=360;
+                this.startPositiony=405;
                 this.direction= 'left';
                 break;
         }
@@ -192,7 +192,7 @@ var Fruit = function (name, value)
 }
 
 function snakeCollision(snake,snake2) {
-    if(snake.alive)
+    if(snake.alive && snake2.alive)
     {
         head=snake.getFirstCell();
         // Check if the head of the snake overlaps with any part of the snake.

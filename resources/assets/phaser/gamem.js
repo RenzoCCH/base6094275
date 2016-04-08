@@ -1,3 +1,18 @@
+var socket = new WebSocket("ws://127.0.0.1:2000");
+var open=false;
+socket.onopen=function()
+{
+    open = true;
+}
+socket.onmessage=function(evt)
+{
+    var data = JSON.parse(evt.data);
+    alert(data.snake);
+}
+socket.onclose=function()
+{
+    open = false;
+}
 
 
 var Gamem = {
@@ -23,7 +38,7 @@ var Gamem = {
         speed = 0;                      // Game speed.
         updateDelay = 0;                // A variable for control over update rates.
         numberplayers=8;
-        player=1;
+        player=1;                       // The player that you control
         countover = 20;
         textStyle_Key = { font: "bold 14px sans-serif", fill: "#46c0f9", align: "center" };
         textStyle_Value = { font: "bold 18px sans-serif", fill: "#fff", align: "center" };
@@ -56,21 +71,25 @@ var Gamem = {
 
         //----------------------------------controls
 
-        if (cursors.right.isDown && snakes[player].direction!='left')
+        if (cursors.right.isDown && snakes[player].direction!='left' && snakes[player].direction!='right')
         {
             snakes[player].newdirection = 'right';
+            this.sendsocket('right');
         }
-        else if (cursors.left.isDown && snakes[player].direction!='right')
+        else if (cursors.left.isDown && snakes[player].direction!='right' && snakes[player].direction!='left')
         {
             snakes[player].newdirection = 'left';
+            this.sendsocket('left');
         }
-        else if (cursors.up.isDown && snakes[player].direction!='down')
+        else if (cursors.up.isDown && snakes[player].direction!='down' && snakes[player].direction!='up')
         {
             snakes[player].newdirection = 'up';
+            this.sendsocket('up');
         }
-        else if (cursors.down.isDown && snakes[player].direction!='up')
+        else if (cursors.down.isDown && snakes[player].direction!='up' && snakes[player].direction!='down')
         {
             snakes[player].newdirection = 'down';
+            this.sendsocket('down');
         }
 
         // A formula to calculate game speed based on the score.
@@ -114,6 +133,13 @@ var Gamem = {
             }
         }
 
+    },
+    sendsocket: function(direction)
+    {
+        socket.send(JSON.stringify({
+            snake:player,
+            newdirection: direction
+        }));
     }
 
 

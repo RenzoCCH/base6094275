@@ -61,13 +61,15 @@ gulp.task('snakegame', function() {
     return gulp.src( 'resources/assets/phaser/*.js')
         .pipe(concat('snake.min.js'))
         //  .pipe(uglify())
-        .pipe(gulp.dest('public/assets/dist/'));
+        .pipe(gulp.dest('public/assets/dist/'))
+        .pipe(browserSync.reload({ stream: true}));
 });
 //-----------------------
 gulp.task('watch', function(){
     gulp.watch('resources/assets/sass/**/*.scss', ['compass']);
     gulp.watch('resources/views/**/*.php',browserSync.reload);
     gulp.watch('resources/assets/app/**/*.js',['footerscripts']);
+    gulp.watch('resources/assets/phaser/**/*.js',['snakegame']);
     // Other watchers
 })
 gulp.task('browserSync', function() {
