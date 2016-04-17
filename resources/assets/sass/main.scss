@@ -12,14 +12,17 @@
 
 //-------------for cross browser suport-------------------------------
 $browser-minimum-versions: ("chrome": null, "firefox": "4", "ie": "7", "safari": "6");
+
 ///------------import utilities-------------------
 
-@import "utilities/variables";
-@import "utilities/colors";
+@import "variables/variables";
+@import "variables/colors";
+@import "fonts/fontello";
 @import "utilities/responsive__utilities";
 @import "utilities/mixins";
 @import "utilities/animate";
 @import "utilities/generic";
+@import "layout/layout";
 @import "background/background";
 
 ///-------------------modules---------------------

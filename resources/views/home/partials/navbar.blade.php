@@ -1,17 +1,35 @@
-<nav class="navbar navbar-default">
- <div class="container-fluid">
-		<div class="navbar-header">
-          <a class="navbar-brand" href="#">Page Title</a>
-        </div>
-         <ul class="nav navbar-nav navbar-right">
-            @cannot('home')
-            <li><a href="/">{{trans("auth.home")}}</a></li>
-            @endcan
-            <li><a href="{{route('user/edition')}}">{{trans("auth.edit_user")}}</a></li>
-            @can('crud-users')
-            <li><a href="{{route('admin.users.index')}}">{{trans("home.users")}}</a></li>
-            @endcan
-            <li><a href="{{route('logout')}}">{{trans("auth.logout")}}</a></li>
-         </ul>
- </div>
-</nav>
+<header class="navbar" >
+  <div class="">
+    <a class="navbar-brand" href="#">Page Title</a>
+  </div>
+  <ul class="icon-container float-right">
+    @cannot('home')
+    <li class="icon-item">
+      <a href="/" class="icon-circle">
+        <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+      </a>
+      <sub class="icon-text">{{trans("auth.home")}}</sub>
+    </li>
+    @endcan
+    @can('crud-users')
+    <li class="icon-item">
+      <a href="{{route('admin.users.index')}}" class="icon-circle">
+        <span class="fontello fontello-users"></span>
+      </a>
+      <sub class="icon-text">{{trans("home.users")}}</sub>
+    </li>
+    @endcan
+    <li class="icon-item">
+      <a href="{{route('user/edition')}}" class="icon-circle">
+        <span class="fontello fontello-cog"></span>
+      </a>
+      <sub class="icon-text">{{trans("auth.edit_user")}}</sub>
+    </li>
+    <li class="icon-item">
+      <a href="{{route('logout')}}" class="icon-circle">
+        <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
+      </a>
+      <sub class="icon-text">{{trans("auth.logout")}}</sub>
+    </li>
+  </ul>
+</header>

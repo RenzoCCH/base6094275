@@ -1,3 +1,8 @@
+//----------------------------compass reset----------------------------------------
+
+@include global-reset();
+
+//--------------------------browser reset-------------------------------------------------
 input[type=search], input[type=text], button{
   -webkit-appearance: none;
   appearance: none;

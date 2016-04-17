@@ -20,7 +20,7 @@
 
     <main class="container-fluid main" >
       @can('auth')
-      @include('home.partials.navbar')
+        @include('home.partials.navbar')
       @endcan
       @yield('content')
     </main>

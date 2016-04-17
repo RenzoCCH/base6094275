@@ -1,12 +1,15 @@
+//-------------------------------------------------------------------------------------------------------------------------------------------------------------
+//                                        MESSAGES
+//-------------------------------------------------------------------------------------------------------------------------------------------------------------
 .advice
 {
-  @include setfadein();
   width: 100%;
-  @include border-radius(4px);
-  display: block;
-  text-align: center;
   margin-top: 3px;
   margin-bottom: 3px;
+  display: block;
+  text-align: center;
+  @include setfadein();
+  @include border-radius(4px);
   ul{
     margin-bottom: 0px;
   }
@@ -27,7 +30,68 @@ span.error {
   @extend .advice;
   @extend .warning;
 }
-.main
+//-------------------------------------------------------------------------------------------------------------------------------------------------------------
+//                                        ICONS
+//-------------------------------------------------------------------------------------------------------------------------------------------------------------
+.icon-container
 {
-  height: 100vh;
+  margin: 5px;
+  .icon-item
+  {
+    display: inline-block;
+  }
+}
+.icon-item
+{
+  position: relative;
+  text-align: center;
+  margin: 5px;
+  padding-bottom: 20px;
+  .icon-circle
+  {
+    display: block;
+    width:40px;
+    height:40px;
+    text-align: center;
+    border:solid 3px $letter-color;
+    color: $letter-color;
+    @include  border-radius(100%,100%);
+    @include transition-property(all);
+    @include transition-duration(0.5s);
+    .glyphicon, .fontello:before{
+      margin-top: 50%;
+      font-size: 16px;
+      @include transform(translateY(-50%));
+    }
+    &:hover
+    {
+      border-color: $letter-color-blue;
+      color: $letter-color-blue;
+    }
+    &:hover + .icon-text {
+      display: block;
+    }
+  }
+  .icon-text
+  {
+    display: none;
+    position: absolute;
+    left: 50%;
+    bottom: 10px;
+    font-size: 12px;
+    color: $letter-color;
+    @include transform(translateX(-50%));
+    @include setfadein();
+  }
+}
+//---------------------------------------------------------------------------------------------------------------------------------------------------------------
+//                                        POSITION STYLES
+//---------------------------------------------------------------------------------------------------------------------------------------------------------------
+.float-right
+{
+  float: right;
+}
+.float-left
+{
+  float: left;
 }
