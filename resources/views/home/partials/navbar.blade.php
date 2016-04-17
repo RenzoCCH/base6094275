@@ -1,7 +1,5 @@
 <header class="navbar" >
-  <div class="">
-    <a class="navbar-brand" href="#">Page Title</a>
-  </div>
+  <a class="" href="#">Page Title</a>
   <ul class="icon-container float-right">
     @cannot('home')
     <li class="icon-item">

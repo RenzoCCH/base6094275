@@ -18,7 +18,7 @@
 </head>
 <body ng-controller="backgroundController">
 
-    <main class="container-fluid main" >
+    <main class="main" >
       @can('auth')
         @include('home.partials.navbar')
       @endcan
