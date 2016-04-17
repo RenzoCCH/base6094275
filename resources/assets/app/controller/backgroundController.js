@@ -1,15 +1,15 @@
-app.controller('backgroundController', ['$scope','$rootScope','Modernizr', 'screenWidthService', 'ismobile', function ($scope,$rootScope, Modernizr, screenWidthService, ismobile) {
-  function changeLetterColor() {
-    var cols = $('.link-color');
-    var length = cols.length;
-    for (i = 0; i < length; i++) {
-      cols[i].className = 'link-color-black';
-    }
-  }
+app.controller('backgroundController', ['$scope','$rootScope','screenWidthService', 'isBackgroundAllowed', function ($scope,$rootScope, screenWidthService, isBackgroundAllowed) {
+  //function changeLetterColor() {
+  //  var cols = $('.link-color');
+  //  var length = cols.length;
+  //  for (i = 0; i < length; i++) {
+  //    cols[i].className = 'link-color-black';
+  //  }
+  //}
 
   function makerainthunderday() {
     $('html').addClass("dialluvioso");
-    if (Modernizr.cssall && !ismobile) {
+    if (isBackgroundAllowed) {
       var cloudsnumber;
       if (screenWidthService == 'md' || screenWidthService == 'lg') {
         cloudsnumber = 8;
@@ -29,12 +29,11 @@ app.controller('backgroundController', ['$scope','$rootScope','Modernizr', 'scre
       }
       addThunder(cloudsnumber);
     }
-    changeLetterColor();
   }
 
   function makerainthundernight() {
     $('html').addClass("noche");
-    if (Modernizr.cssall && !ismobile) {
+    if (isBackgroundAllowed) {
       var cloudsnumber;
       if (screenWidthService == 'md' || screenWidthService == 'lg') {
         cloudsnumber = 8;
@@ -60,7 +59,7 @@ app.controller('backgroundController', ['$scope','$rootScope','Modernizr', 'scre
 
   function makerainnight() {
     $('html').addClass("noche");
-    if (Modernizr.cssall && !ismobile) {
+    if (isBackgroundAllowed) {
       var cloudsnumber;
       if (screenWidthService == 'md' || screenWidthService == 'lg') {
         cloudsnumber = 12;
@@ -85,7 +84,7 @@ app.controller('backgroundController', ['$scope','$rootScope','Modernizr', 'scre
 
   function makerainday() {
     $('html').addClass("dialluvioso");
-    if (Modernizr.cssall && !ismobile) {
+    if (isBackgroundAllowed) {
       var cloudsnumber;
       if (screenWidthService == 'md' || screenWidthService == 'lg') {
         cloudsnumber = 12;
@@ -104,12 +103,11 @@ app.controller('backgroundController', ['$scope','$rootScope','Modernizr', 'scre
         $('body').append(cloud.getCloud());
       }
     }
-    changeLetterColor();
   }
 
   function makesnownight() {
     $('html').addClass("noche");
-    if (Modernizr.cssall && !ismobile) {
+    if (isBackgroundAllowed) {
       var snownumber;
       var cloudsnumber;
       if (screenWidthService == 'md' || screenWidthService == 'lg') {
@@ -139,7 +137,7 @@ app.controller('backgroundController', ['$scope','$rootScope','Modernizr', 'scre
 
   function makesnowday() {
     $('html').addClass("dia");
-    if (Modernizr.cssall && !ismobile) {
+    if (isBackgroundAllowed) {
       var snownumber;
       var cloudsnumber;
       if (screenWidthService == 'md' || screenWidthService == 'lg') {
@@ -165,13 +163,12 @@ app.controller('backgroundController', ['$scope','$rootScope','Modernizr', 'scre
       var sun = new Sun();
       $('body').append(sun.getSun());
     }
-    changeLetterColor();
   }
 
   //------for night--------------------
   function makenight() {
     $('html').addClass("noche");
-    if (Modernizr.cssall && !ismobile) {
+    if (isBackgroundAllowed) {
       var starnumber;
       var cloudsnumber;
       if (screenWidthService == 'md' || screenWidthService == 'lg') {
@@ -202,7 +199,7 @@ app.controller('backgroundController', ['$scope','$rootScope','Modernizr', 'scre
   //-----------for day----------
   function makeday() {
     $('html').addClass("dia");
-    if (Modernizr.cssall && !ismobile) {
+    if (isBackgroundAllowed) {
       var cloudsnumber;
       if (screenWidthService == 'md' || screenWidthService == 'lg') cloudsnumber = 10;
       else if (screenWidthService == 'sm') cloudsnumber = 7;
@@ -216,7 +213,6 @@ app.controller('backgroundController', ['$scope','$rootScope','Modernizr', 'scre
       var sun = new Sun();
       $('body').append(sun.getSun());
     }
-    changeLetterColor();
   }
 
   var Cloud = function () {

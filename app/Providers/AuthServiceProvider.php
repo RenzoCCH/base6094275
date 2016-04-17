@@ -35,12 +35,17 @@ class AuthServiceProvider extends ServiceProvider
 			return \Auth::check();
 		});
 		$gate->define('home',function(){
-			return (Request::path()==='/'?true:false	);
+			return ((Request::path()==='/' || Request::path()=='home' || Request::path() == '')?true:false);
 		});
 		$gate->define('ismobile',function(){
 			$agent = new Agent();
 			return $agent->isMobile();
 		});
-    }
+		$gate->define('isphone',function(){
+			$agent = new Agent();
+			return $agent->isPhone();
+		});
+
+	}
 }
 
