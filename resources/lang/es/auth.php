@@ -24,6 +24,7 @@ return [
     'reset_password'=>'Enviar Restablecer Contraseña',
     'home'=>'Casa',
     'edit_user'=>'Configuración',
+	'edit_profile'=>'Mi perfil',
     'edit_password'=>'Cambiar Contraseña',
 ];
 

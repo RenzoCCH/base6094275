@@ -24,7 +24,7 @@ gulp.task('compass', function () {
       sass: 'resources/assets/sass',
       cache: false
     }))
-    .pipe(production(minifyCss()))
+    //.pipe(minifyCss())
     .pipe(gulp.dest('public/assets/css'))
     .pipe(browserSync.reload({
       stream: true
@@ -53,7 +53,7 @@ gulp.task('footerscripts', ['uglifyapp'], function () {
 gulp.task('uglifyapp', function () {
   return gulp.src('resources/assets/app/**/*.js')
     .pipe(concat('uglifyapp.min.js'))
-    .pipe(production(uglify()))
+    //.pipe(uglify())
     .pipe(gulp.dest('public/assets/dist/'));
 });
 

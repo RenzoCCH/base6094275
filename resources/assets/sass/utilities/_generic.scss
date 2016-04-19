@@ -53,46 +53,47 @@ span.error {
     width:40px;
     height:40px;
     text-align: center;
-    border:solid 3px $letter-color;
-    color: $letter-color;
+    border:solid 3px $letter-color-white-dark;
+    color: $letter-color-white-dark;
     @include  border-radius(100%,100%);
     @include transition-property(all);
-    @include transition-duration(0.5s);
+    @include transition-duration(1s);
     .glyphicon, .fontello:before{
       margin-top: 50%;
-      font-size: 16px;
+      font-size: 20px;
       @include transform(translateY(-50%));
     }
-    &:hover
+    &:hover, &:active
     {
-      border-color: $letter-color-blue;
-      color: $letter-color-blue;
+      border-color: $letter-color;
+      color: $letter-color;
     }
-    &:hover + .icon-text {
-      display: block;
+    &:hover + .icon-text, &:active + .icon-text{
+      display: inline-block;
     }
   }
   .icon-text
   {
     display: none;
     position: absolute;
+    white-space: nowrap;
     left: 50%;
-    bottom: 10px;
+    bottom: 5px;
     font-size: 12px;
     color: $letter-color;
     @include transform(translateX(-50%));
-    @include setfadein();
+    @include setfadein(1s);
   }
   &.contrasted
   {
     .icon-circle
     {
-      border:solid 3px $letter-color-blue;
-      color: $letter-color-blue;
-      &:hover
+      border:solid 3px $letter-color-blue-light;
+      color: $letter-color-blue-light;
+      &:hover, &:active
       {
-        border-color: $letter-color;
-        color: $letter-color;
+        border-color: $letter-color-blue;
+        color: $letter-color-blue;
       }
     }
     .icon-text

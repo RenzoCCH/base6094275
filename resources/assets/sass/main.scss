@@ -1,5 +1,5 @@
 @import "compass";
-@import "utilities/reset";
+
 // Import Bootstrap Compass integration
 @import "bootstrap-compass";
 
@@ -9,23 +9,31 @@
 // Import Bootstrap for Sass
 @import "bootstrap";
 
+//------------------utilities----------------------------------------
+@import "utilities/mixins";
+@import "utilities/animate";
+@import "utilities/reset";
 
-//-------------for cross browser suport-------------------------------
+//-------------for cross browser suport------------------------------
 $browser-minimum-versions: ("chrome": null, "firefox": "4", "ie": "7", "safari": "6");
 
-///------------import utilities-------------------
+//-------------font family-------------------------------------------
+html,body
+{
+  font-family: Arial, Helvetica, sans-serif;
+}
 
+///------------import utilities--------------------------------------
 @import "variables/variables";
 @import "variables/colors";
 @import "fonts/fontello";
 @import "utilities/responsive__utilities";
-@import "utilities/mixins";
-@import "utilities/animate";
 @import "utilities/generic";
 @import "layout/layout";
+@import "layout/header";
 @import "background/background";
 
-///-------------------modules---------------------
+///-------------------modules---------------------------------------
 @import "login/_login";
 
 

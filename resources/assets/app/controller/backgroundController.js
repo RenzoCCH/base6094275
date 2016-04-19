@@ -431,7 +431,7 @@ app.controller('backgroundController', ['$scope','$rootScope','screenWidthServic
         makeday();
     }
   }
-  backgroundController($rootScope.randomBackground);
+    backgroundController($rootScope.randomBackground);
 }]);
 
 

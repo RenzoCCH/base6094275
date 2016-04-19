@@ -23,5 +23,6 @@ return [
     'send_password_reset'=>'Send Password Reset',
     'home'=>'Home',
     'edit_user'=>'Configuration',
+    'edit_profile'=>'My profile',
     'edit_password'=>'Change Password',
 ];

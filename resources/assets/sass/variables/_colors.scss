@@ -28,14 +28,19 @@ $thunder:#c7cbd0;
 \* -------------------------------------------------------------------------- */
 
 $background-white:#ffffff;
+$background-gray-soft:#dddddd;
+$background-gray-dark:darken($background-gray-soft,10%);
+$background-gray-darker:darken($background-gray-soft,20%);
 
 /* -------------------------------------------------------------------------- *\
-    ## Colors
+    ## Colors leters
 \* -------------------------------------------------------------------------- */
 
 $letter-color:#ffffff;
+$letter-color-white-dark:darken($letter-color, 13%);
 $letter-color-black:#000000;
 $letter-color-blue:#337ab7;
+$letter-color-blue-light: lighten($letter-color-blue, 13%);
 
 /* -------------------------------------------------------------------------- *\
     ## notifications
@@ -48,4 +53,6 @@ $warning-letter-color-notification:#8a6d3b;
 $success-notification:#dff0d8;
 $success-borde-notification:#d6e9c6;
 $success-letter-color-notification:#3c763d;
+
+
 

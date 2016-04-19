@@ -16,7 +16,7 @@ app.factory('screenWidthService', function () {
 .factory('isBackgroundAllowed', ['$location', 'ismobile', 'Modernizr', function ($location, ismobile, Modernizr) {
   if (!Modernizr.cssall) return false
   if (ismobile) return false
-  if (window.location.pathname == "/login") return true;
+  if (window.location.pathname == "/login" || window.location.pathname.startsWith('/password')) return true;
   else return false;
   return true;
 }])
