@@ -79,7 +79,12 @@
     @content;
   }
 }
-
+@mixin into-xxs($property: jx, $value: 0){
+  @media (max-width:$screen-xs) {
+    @if $property != jx { #{$property}: #{$value}; }
+    @content;
+  }
+}
 @mixin into-md-lg($property: jx, $value: 0){
   @media (min-width:$screen-md-min)  {
     @if $property != jx { #{$property}: #{$value}; }
@@ -88,6 +93,12 @@
 }
 @mixin into-xs-sm($property: jx, $value: 0){
   @media (max-width:$screen-sm-max) {
+    @if $property != jx { #{$property}: #{$value}; }
+    @content;
+  }
+}
+@mixin into-sm-md-lg($property: jx, $value: 0){
+  @media (min-width:$screen-sm-min){
     @if $property != jx { #{$property}: #{$value}; }
     @content;
   }

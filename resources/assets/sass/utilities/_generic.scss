@@ -1,12 +1,15 @@
+//-------------------------------------------------------------------------------------------------------------------------------------------------------------
+//                                        MESSAGES
+//-------------------------------------------------------------------------------------------------------------------------------------------------------------
 .advice
 {
-  @include setfadein();
   width: 100%;
-  @include border-radius(4px);
-  display: block;
-  text-align: center;
   margin-top: 3px;
   margin-bottom: 3px;
+  display: block;
+  text-align: center;
+  @include setfadein();
+  @include border-radius(4px);
   ul{
     margin-bottom: 0px;
   }
@@ -27,7 +30,86 @@ span.error {
   @extend .advice;
   @extend .warning;
 }
-.main
+//-------------------------------------------------------------------------------------------------------------------------------------------------------------
+//                                        ICONS
+//-------------------------------------------------------------------------------------------------------------------------------------------------------------
+.icon-container
 {
-  height: 100vh;
+  margin: 5px;
+  .icon-item
+  {
+    display: inline-block;
+  }
+}
+.icon-item
+{
+  position: relative;
+  text-align: center;
+  margin: 5px;
+  padding-bottom: 20px;
+  .icon-circle
+  {
+    display: block;
+    width:40px;
+    height:40px;
+    text-align: center;
+    border:solid 3px $letter-color-white-dark;
+    color: $letter-color-white-dark;
+    @include  border-radius(100%,100%);
+    @include transition-property(all);
+    @include transition-duration(1s);
+    .glyphicon, .fontello:before{
+      margin-top: 50%;
+      font-size: 20px;
+      @include transform(translateY(-50%));
+    }
+    &:hover, &:active
+    {
+      border-color: $letter-color;
+      color: $letter-color;
+    }
+    &:hover + .icon-text, &:active + .icon-text{
+      display: inline-block;
+    }
+  }
+  .icon-text
+  {
+    display: none;
+    position: absolute;
+    white-space: nowrap;
+    left: 50%;
+    bottom: 5px;
+    font-size: 12px;
+    color: $letter-color;
+    @include transform(translateX(-50%));
+    @include setfadein(1s);
+  }
+  &.contrasted
+  {
+    .icon-circle
+    {
+      border:solid 3px $letter-color-blue-light;
+      color: $letter-color-blue-light;
+      &:hover, &:active
+      {
+        border-color: $letter-color-blue;
+        color: $letter-color-blue;
+      }
+    }
+    .icon-text
+    {
+      color: $letter-color-blue;
+    }
+  }
+}
+//---------------------------------------------------------------------------------------------------------------------------------------------------------------
+//                                        POSITION STYLES
+//---------------------------------------------------------------------------------------------------------------------------------------------------------------
+.float-right
+{
+  float: right;
+}
+.float-left
+{
+  float: left;
 }

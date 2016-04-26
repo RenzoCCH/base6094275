@@ -1,25 +1,24 @@
 .link-color
 {
+  @include unstyled-link();
+  @include transition(all ease 1s);
   color: $letter-color;
   cursor: pointer;
-  @include transition(all ease 1s);
   &:hover
   {
     color: $letter-color-blue;
     text-decoration: none;
   }
-}
-.link-color-black
-{
-  color: $letter-color-blue;
-  cursor: pointer;
-  @include transition(all ease 1s);
-  &:hover
+  &.contrasted
   {
-    color: $letter-color;
-    text-decoration: none;
+    color: $letter-color-blue;
+    &:hover
+    {
+      color: $letter-color;
+    }
   }
 }
+
 .container-fluid, body {
 	background-color: transparent !important;
 }

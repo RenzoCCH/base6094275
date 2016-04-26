@@ -1,3 +1,8 @@
+//----------------------------compass reset----------------------------------------
+
+@include global-reset();
+
+//--------------------------browser reset-------------------------------------------------
 input[type=search], input[type=text], button{
   -webkit-appearance: none;
   appearance: none;
@@ -10,7 +15,14 @@ input:-webkit-autofill,input:focus {
 {
   padding: 0 !important;
 }
-
+a:hover
+{
+  text-decoration: none !important;
+}
+.reset-button
+{
+  @include reset-button;
+}
 //********************** bootstrap disabled********************************
 .btn
 {

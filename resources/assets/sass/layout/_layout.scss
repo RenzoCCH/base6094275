@@ -1,0 +1,70 @@
+.main
+{
+  min-height: 100%;
+  height: 100%;
+  height: 100vh;
+}
+.center-container
+{
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 30px;
+  position: relative;
+  @include setfadein(2s);
+  @include into-xs-landscape()
+  {
+    padding-bottom: 30px;
+  }
+  .advice
+  {
+    margin-bottom: 15px;
+
+  }
+  .center-container-form
+  {
+    width: 230px;
+    @include into-md-lg()
+    {
+      width: 290px;
+    }
+    @include into-xs-sm()
+    {
+      margin: auto;
+    }
+  }
+  .center-container-options
+  {
+    margin-left: 0;
+    width: 100%;
+    text-align: center;
+    @include into-xs-sm()
+    {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+    }
+  }
+
+}
+.no-flexbox
+{
+  .center-container
+  {
+    text-align: center;
+    .center-container-form
+    {
+      margin-left: auto;
+      margin-right: auto;
+      padding-top: 12%;
+      @include into-xs(padding-top, 30%);
+      @include into-sm(padding-top, 15%);
+      @include into-xs-landscape(padding-top,20%);
+    }
+
+  }
+}
+
+

@@ -1,0 +1,138 @@
+//--------------------------------------------------------------------------------------------------------------------------------------------
+//                                                            FOR HEADER
+//--------------------------------------------------------------------------------------------------------------------------------------------
+.header
+{
+  height: 80px;
+  overflow: hidden;
+  margin-bottom: 10px;
+  @include transition(height ease 1s);
+  @include into-xs()
+  {
+    height: 60px;
+  }
+}
+.navbar-icon-container
+{
+  float: right;
+  @include into-xs()
+  {
+    float: none;
+    margin: 0;
+    background-color: $background-gray-soft;
+    border-top: 1px solid $background-gray-darker;
+    .icon-item
+    {
+      display: block;
+      margin: 0;
+      padding: 5px;
+      border-bottom: 1px solid $background-gray-darker;
+      &:active
+      {
+        background-color: $background-gray-dark;
+      }
+      a{
+        display: block;
+        text-align: left;
+      }
+    }
+    .icon-circle
+    {
+      display: inline-block;
+      margin-left: 10px;
+      margin-right: 10px;
+      border: solid 3px $background-gray-darker;
+      color: $background-gray-darker;
+    }
+    .icon-text
+    {
+      display: inline-block;
+      position: relative;
+      left: 0;
+      bottom: 11px;
+      font-size: 15px;
+      vertical-align: middle;
+      color: $background-gray-darker;
+      @include transform(none);
+    }
+  }
+}
+.icon-menu-small
+{
+  padding-bottom: 0;
+  margin-top: 10px;
+  &.active
+  {
+
+    .fontello-menu
+    {
+      &:before
+      {
+        content: '\e808';
+      }
+    }
+  }
+}
+
+//--------------------------------------------------------------------------------------------------------------------------------------------
+//                                                            FOR THE LOGO
+//--------------------------------------------------------------------------------------------------------------------------------------------
+.logo-container
+{
+  display: inline-block;
+  margin: 5px;
+  height: 45px;
+  img
+  {
+    height: 100%;
+  }
+  @include into-xs()
+  {
+    margin: 9px;
+    height: auto;
+    width: 270px;
+    img
+    {
+      height: auto;
+      width: 100%;
+    }
+  }
+  @include into-xxs()
+  {
+    margin: 15px;
+    width: 190px;
+  }
+}
+.container-logo-title
+{
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 12px;
+  width: 300px;
+  @include setfadein(3s);
+  @include into-sm()
+  {
+    margin-top: 60px;
+  }
+  @include into-xs()
+  {
+    margin-top: 30px;
+    width: 70%;
+    max-width: 300px;
+  }
+  img
+  {
+    max-width: 100%;
+  }
+}
+//--------------------------------------------------------------------------------------------------------------------------------------------
+//                                                            NO FLEX
+//--------------------------------------------------------------------------------------------------------------------------------------------
+
+.no-flexbox
+{
+  .container-logo-title
+  {
+    padding: 10px;
+  }
+}
