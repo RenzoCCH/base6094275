@@ -3,13 +3,13 @@
 //--------------------------------------------------------------------------------------------------------------------------------------------
 .header
 {
-  height: 80px;
+  height: $header-height;
   overflow: hidden;
-  margin-bottom: 10px;
+  margin-bottom: $header-margin-bottom;
   @include transition(height ease 1s);
   @include into-xs()
   {
-    height: 60px;
+    height: $header-height-small;
   }
 }
 .navbar-icon-container

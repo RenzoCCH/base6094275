@@ -55,3 +55,11 @@ $grid-gutter-width:         20px !default;
 $grid-float-breakpoint:     $screen-sm-min !default;
 //** Point at which the navbar begins collapsing.
 $grid-float-breakpoint-max: ($grid-float-breakpoint - 1) !default;
+
+/* -------------------------------------------------------------------------- *\
+    ## Header
+\* -------------------------------------------------------------------------- */
+$header-height:80px;
+$header-height-small:60px;
+$header-margin-bottom:10px;
+

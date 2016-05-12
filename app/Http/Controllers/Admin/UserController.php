@@ -11,14 +11,16 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Contracts\Support\Jsonable;
 
 class UserController extends Controller
 {
 
     public function index()
     {
-        $users = User::orderBy('id')->paginate(10);
-        return view('admin.users.index',compact('users'));
+//        $users = User::orderBy('id')->paginate(10);
+//        return view('admin.users.index',compact('users'));
+        return view('admin.users.index');
     }
     public function create()
     {
@@ -53,4 +55,9 @@ class UserController extends Controller
         Session::flash('message',trans('home.messages.delete_user_suceed', ['name' => $user->name]));
         return redirect()->route('admin.users.index');
     }
+	public function usersAjax(Request $request)
+	{
+		if ($request->ajax()) return User::orderBy('id')->paginate(10)->toJson();
+		else return redirect('/');
+	}
 }

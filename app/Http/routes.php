@@ -48,6 +48,10 @@ Route::get('user/edition',[
     'uses'=>'UserController@editUser',
     'as'=>'user/edition'
 ]);
+Route::get('user/lista',[
+	'uses'=>'UserController@lista',
+	'as'=>'user/lista'
+]);
 Route::put('user/update',[
     'uses'=>'UserController@updateUser',
     'as'=>'user/update'
@@ -68,8 +72,9 @@ Route::post('password/reset', 'Auth\PasswordController@postReset');
 
 //-----------this is for the list of users--------------
 Route::group(['prefix' => 'admin','namespace' => 'Admin','middleware'=>array('auth','admin')], function () {
-    Route::resource('users','UserController');
-    Route::get('users/{users}/destroy', ['as'=>'admin.users.delete','uses'=>'UserController@destroy']);
+	Route::get('/users/usersAjax', ['as'=>'admin.users.usersAjax','uses'=>'UserController@usersAjax']);
+	Route::get('/users/{users}/destroy', ['as'=>'admin.users.delete','uses'=>'UserController@destroy']);
+	Route::resource('users','UserController');
 });
 
 // Sending Email

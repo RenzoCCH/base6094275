@@ -8,27 +8,31 @@
 
     <title>Base</title>
     {!! Html::style('assets/css/main.css') !!}
+    {!! Html::style('bower_components/angular-ui-grid/ui-grid.css') !!}
 
     {{--{!! Html::script('assets/js/modernizr-custom.js')!!}--}}
     {{--{!! Html::script('bower_components/webcomponentsjs/webcomponents.js')!!}--}}
     {!! Html::script('assets/dist/header.min.js')!!}
-
     {{--adding polymeer dom--}}
     <link rel="import" href="{{url()}}/elements/button-loading.html">
 </head>
 <body ng-controller="backgroundController">
-
     <main class="main">
-      @can('auth')
-        @include('home.partials.navbar')
-      @endcan
+    @can('auth')
+      @include('home.partials.navbar')
+			<div class="main-content">
+	      @yield('content')
+			</div>
+    @endcan
+    @cannot('auth')
       @yield('content')
+    @endcan
     </main>
+    {{--{!! Html::script('bower_components/jquery/dist/jquery.min.js')!!}--}}
+    {{--{!! Html::script('bower_components/angular/angular.js')!!}--}}
+    {{--{!! Html::script('assets/app/app.js')!!}--}}
 
-     {{--{!! Html::script('bower_components/jquery/dist/jquery.min.js')!!}--}}
-     {{--{!! Html::script('bower_components/angular/angular.js')!!}--}}
-     {{--{!! Html::script('assets/app/app.js')!!}--}}
-
-	{!! Html::script('assets/dist/all.min.js')!!}
+		{!! Html::script('assets/dist/all.min.js')!!}
+		{!! Html::script('bower_components/angular-ui-grid/ui-grid.js')!!}
 </body>
 </html>
