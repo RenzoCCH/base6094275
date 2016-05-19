@@ -25,7 +25,7 @@ class UserController extends Controller
     public function create()
     {
         //
-    }
+				    }
     public function store(Request $request)
     {
         //
@@ -57,7 +57,7 @@ class UserController extends Controller
     }
 	public function usersAjax(Request $request)
 	{
-		if ($request->ajax()) return User::orderBy('id')->paginate(10)->toJson();
+		if ($request->ajax()) return User::orderBy('id')->paginate(20)->toJson();
 		else return redirect('/');
 	}
 }

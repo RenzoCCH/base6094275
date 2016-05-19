@@ -21,6 +21,7 @@
     </li>
     @endcan
     @can('crud-users')
+			@can('admin/users')
     <li class="icon-item" background-constrant>
       <a href="{{route('admin.users.index')}}">
         <figure class="icon-circle">
@@ -29,6 +30,7 @@
         <sub class="icon-text">{{trans("home.users")}}</sub>
       </a>
     </li>
+      @endcan
     @endcan
     <li class="icon-item" background-constrant>
       <a href="{{route('user/edition')}}">

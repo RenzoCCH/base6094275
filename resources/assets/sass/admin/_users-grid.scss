@@ -1,4 +1,62 @@
 .users-grid
 {
-  background-color: green;
+  height: 646px;
+  .ui-grid-viewport
+  {
+    overflow-y: scroll;
+  }
+}
+.pagination-container
+{
+  text-align: center;
+  @include into-xs()
+  {
+    padding: 0 !important;
+  }
+  @include into-sm-md-lg()
+  {
+    text-align: left;
+  }
+  .pagination
+  {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    .angle
+    {
+      a{
+        padding-left: 6px;
+        padding-right: 6px;
+      }
+    }
+  }
+}
+.counter-container
+{
+  height: 49px;
+  text-align: right;
+  padding-top: 16px;
+  @include into-xs()
+  {
+    display: none;
+  }
+}
+.search-button
+{
+  cursor: pointer;
+}
+.advanced-search
+{
+  float: right;
+  margin: 0;
+  .icon-circle
+  {
+    height: 35px;
+    width: 35px;
+  }
+}
+.pagination-filter
+{
+  height: 100px;
+  width: 100%;
+  background-color: red;
 }

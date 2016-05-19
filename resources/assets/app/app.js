@@ -1,4 +1,4 @@
-var app = angular.module('app', ['ui.grid','ui.grid.pagination'])
+var app = angular.module('app', ['ui.grid'])
   .config(function ($interpolateProvider) {
     $interpolateProvider.startSymbol('{[{').endSymbol('}]}');
   })

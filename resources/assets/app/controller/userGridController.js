@@ -1,54 +1,62 @@
 app.controller('userGridController', ['$scope','$http',function ($scope,$http) {
   $scope.myData = [];
-  var paginationOptions = {
-    pageNumber: 1,
-    //pageSize: 10,
-    sort: null
+  $scope.paginationOptions = {
+    currentPage: 1,
+    total: 0,
+    lastPage:0,
+    perPage:0,
   };
   $scope.gridOptions = {
-    paginationPageSizes: [10, 20,30,40],
-    paginationPageSize: 10,
-    useExternalPagination: true,
-    useExternalSorting: true,
     columnDefs: [
-      { name: 'id' },
       { name: 'name' },
       { name: 'email' },
       { name: 'roles_id' },
-      //{ name: 'created_at' },
-      //{ name: 'updated_at' },
-    ],
-    onRegisterApi: function(gridApi) {
-      $scope.gridApi = gridApi;
-      //$scope.gridApi.core.on.sortChanged($scope, function(grid, sortColumns) {
-      //  if (sortColumns.length == 0) {
-      //    paginationOptions.sort = null;
-      //  } else {
-      //    paginationOptions.sort = sortColumns[0].sort.direction;
-      //  }
-      //  getPage();
-      //});
-      gridApi.pagination.on.paginationChanged($scope, function (newPage, pageSize) {
-        //alert($scope.gridOptions.totalItems );
-        paginationOptions.pageNumber = newPage;
-      //  paginationOptions.pageSize = pageSize;
-        getPage();
-      });
+    ]
+  };
+  $scope.gridOptionsNext = function()
+  {
+    if($scope.paginationOptions.currentPage!=$scope.paginationOptions.lastPage)
+    {
+      $scope.paginationOptions.currentPage++;
+      $scope.getPage($scope.paginationOptions.currentPage);
     }
   };
-
-  var getPage = function() {
-    $http({
-      method: 'GET',
-      url: '/admin/users/usersAjax?page='+paginationOptions.pageNumber
-    }).then(function successCallback(response) {
-      $scope.myData=response.data.data;
-      $scope.gridOptions.data=$scope.myData;
-    }, function errorCallback(response) {
-      alert('an error');
-    });
+  $scope.gridOptionsPrevious = function()
+  {
+    if($scope.paginationOptions.currentPage!=1)
+    {
+      $scope.paginationOptions.currentPage--;
+      $scope.getPage($scope.paginationOptions.currentPage);
+    }
   };
-  getPage();
+  $scope.getPage = function(page) {
+    if(typeof $scope.myData[page] == 'undefined' && $scope.myData[page] == null)
+    {
+      console.log(console.log($scope.myData));
+      $scope.paginationOptions.pagesCalled = page;
+      $http({
+        method: 'GET',
+        url: '/admin/users/usersAjax?page='+page
+      }).then(function successCallback(response) {
+        $scope.myData[page]=response.data.data;
+        $scope.gridOptions.data=response.data.data;
+        $scope.paginationOptions.total=response.data.total;
+        $scope.paginationOptions.currentPage=response.data.current_page;
+        $scope.paginationOptions.lastPage=response.data.last_page;
+        $scope.paginationOptions.perPage=response.data.per_page;
+      }, function errorCallback(response) {
+        alert('an error it couldn receive the json');
+      });
+    }
+    else {
+      console.log('entro');
+      console.log($scope.myData);
+      $scope.paginationOptions.currentPage=page;
+      $scope.gridOptions.data = $scope.myData[page];
+      //$scope.gridOptions.data=$scope.myData.slice(($scope.paginationOptions.pagesCalled*($scope.paginationOptions.currentPage-1)),($scope.paginationOptions.pagesCalled*($scope.paginationOptions.currentPage-1)+$scope.paginationOptions.perPage));
+    }
+  };
+  $scope.getPage($scope.paginationOptions.currentPage);
 }]);
 
 
