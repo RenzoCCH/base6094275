@@ -22,7 +22,7 @@ return [
     'reset_password'=>'Restablecer Contraseña',
 	'send_password_reset'=>'Restablecer Contraseña',
     'reset_password'=>'Enviar Restablecer Contraseña',
-    'home'=>'Casa',
+    'home'=>'Hogar',
     'edit_user'=>'Configuración',
 	'edit_profile'=>'Mi perfil',
     'edit_password'=>'Cambiar Contraseña',

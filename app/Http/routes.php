@@ -73,8 +73,10 @@ Route::post('password/reset', 'Auth\PasswordController@postReset');
 //-----------this is for the list of users--------------
 Route::group(['prefix' => 'admin','namespace' => 'Admin','middleware'=>array('auth','admin')], function () {
 	Route::get('/users/usersAjax', ['as'=>'admin.users.usersAjax','uses'=>'UserController@usersAjax']);
+	Route::get('/roles/rolesAjax', ['as'=>'admin.roles.rolesAjax','uses'=>'RolesController@rolesAjax']);
 	Route::get('/users/{users}/destroy', ['as'=>'admin.users.delete','uses'=>'UserController@destroy']);
 	Route::resource('users','UserController');
+
 });
 
 // Sending Email

@@ -1,6 +1,7 @@
 .users-grid
 {
   height: 646px;
+  background-color: $background-white;
   .ui-grid-viewport
   {
     overflow-y: scroll;
@@ -44,19 +45,68 @@
 {
   cursor: pointer;
 }
-.advanced-search
-{
-  float: right;
-  margin: 0;
-  .icon-circle
+.pagination-filter{
+  position: relative;
+  .pagination-advanced-filter
   {
-    height: 35px;
-    width: 35px;
+    display: none;
+    margin-bottom: 20px;
+    .pagination-filter-field
+    {
+      display: inline-block;
+      vertical-align: top;
+      padding-right: 10px;
+      width: 300px;
+      @include into-md()
+      {
+        width: 210px;
+      }
+      @include into-sm()
+      {
+        width: 180px;
+      }
+    }
+  }
+  .pagination-normal-filter
+  {
+    margin-bottom: 20px;
+    .search-name
+    {
+      vertical-align: top;
+      padding-right: 10px;
+      width: 375px;
+      display: inline-block;
+      @include into-xs()
+      {
+        width: 100%;
+        padding-right: 0;
+      }
+    }
+  }
+  .icon-item
+  {
+    position: absolute;
+    top: 0;
+    right: 15px;
+    display: none;
+    @include into-sm-md-lg()
+    {
+      display: block;
+    }
+  }
+  &.active
+  {
+    .pagination-advanced-filter{
+      display: none;
+      @include into-sm-md-lg()
+      {
+        display: block;
+      }
+    }
+    .pagination-normal-filter
+    {
+      display: none;
+    }
   }
 }
-.pagination-filter
-{
-  height: 100px;
-  width: 100%;
-  background-color: red;
-}
+

@@ -57,7 +57,21 @@ class UserController extends Controller
     }
 	public function usersAjax(Request $request)
 	{
-		if ($request->ajax()) return User::orderBy('id')->paginate(20)->toJson();
+		if ($request->ajax())
+		{
+			$paginator = User::orderBy('name')->Where('name', 'ilike', '%'.$request->input('name').'%' );
+			if($request->has('email'))
+			{	$paginator=$paginator->Where('email', 'ilike', '%'.$request->input('email').'%' );}
+			if($request->has('role'))
+			{	$paginator=$paginator->Where('roles_id',$request->input('role') );}
+
+			$paginator=$paginator->paginate(20)->toJson();
+
+			return $paginator;
+//				->Where('email', 'ilike', '%'.$request->input('email').'%' )
+//				->Where('roles_id',$request->input('role') )
+
+		}
 		else return redirect('/');
 	}
 }

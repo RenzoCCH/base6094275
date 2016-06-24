@@ -75,5 +75,19 @@
 
   }
 }
-
-
+//------------------------------for messages----------------------------------
+.messages
+{
+  @include into-sm-md-lg()
+  {
+    min-height: 48px;
+  }
+  .alert
+  {
+    display: none;
+    strong
+    {
+      font-weight: bold;
+    }
+  }
+}

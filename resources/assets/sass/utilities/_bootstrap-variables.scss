@@ -78,7 +78,7 @@
 // [converter] If $bootstrap-sass-asset-helper if used, provide path relative to the assets load path.
 // [converter] This is because some asset helpers, such as Sprockets, do not work with file-relative paths.
 // $icon-font-path: if($bootstrap-sass-asset-helper, "bootstrap/", "../fonts/bootstrap/")
-$icon-font-path: if($bootstrap-sass-asset-helper, "../public/assets/fonts/bootstrap/", "bootstrap/")
+$icon-font-path: if($bootstrap-sass-asset-helper, "../public/assets/fonts/bootstrap/", "bootstrap/");
 
 //** File name for all font files.
 // $icon-font-name:          "glyphicons-halflings-regular"
@@ -602,7 +602,7 @@ $icon-font-path: if($bootstrap-sass-asset-helper, "../public/assets/fonts/bootst
 //
 //## Define alert colors, border radius, and padding.
 
-// $alert-padding:               15px
+ $alert-padding:               5px;
 // $alert-border-radius:         $border-radius-base
 // $alert-link-font-weight:      bold
 

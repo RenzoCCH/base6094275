@@ -15,5 +15,11 @@ return [
 
     'previous' => '&laquo; Anterior',
     'next'     => 'Siguiente &raquo;',
-
+	'search'  => [
+		'normal' => 'Búsqueda Normal',
+		'advanced'    => 'Búsqueda Avanzada',
+		'of' => 'de',
+		'users' =>'usuarios',
+		'user_categories'=>'Todos,Administrador,Usuario',
+	]
 ];
