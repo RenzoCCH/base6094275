@@ -2,42 +2,73 @@
 @extends('layout')
 
 @section('content')
-    <section class="row">
-        <div class="col-xs-12">
-            @include('generic.advices.errors')
-            @include('generic.advices.succed')
-	        <table class="table table-striped">
-	            <tr>
-	                <th>
-	                {{trans('home.number_pagination')}}
-	                </th>
-	                <th>
-	                {{trans('validation.attributes.name')}}
-	                </th>
-	                <th>
-	                {{trans('validation.attributes.email')}}
-	                </th>
-	                <th>
-	                {{trans('home.roles')}}
-	                </th>
-	                <th>
-	                {{trans('home.actions')}}
-	                </th>
-	            </tr>
-	            @foreach($users as $user)
-	            <tr>
-	                <td>{{$user->id}}</td>
-	                <td>{{$user->name}}</td>
-	                <td>{{$user->email}}</td>
-	                <td>{{$user->roles->description}}</td>
-	                <td>
-	                    <a class="btn btn-default" href="{{route('admin.users.edit',$user)}}">{{trans('home.buttons.edit_button')}}</a>
-	                    <a class="btn btn-default" href="{{route('admin.users.delete', $user)}}">{{trans('home.buttons.delete_button')}}</a>
-	                </td>
-	            </tr>
-	            @endforeach
-	        </table>
-            {!!$users->render()!!}
+	@include('generic.messages')
+	<div class="container" ng-controller="userGridController">
+		<div class="pagination-filter" ng-class="{active:advancedSearchActive}">
+			<div class="col-lg-12 col-md-12 col-sm-12 pagination-advanced-filter fadein">
+				<input type="hidden" id="user_categories" value="{{trans('pagination.search.user_categories')}}"/>
+				<input type="hidden" id="grid_titles" value="{{trans('pagination.search.grid_titles')}}"/>
+        <div class="pagination-filter-field">
+          <input type="text" id="nameAdvancedSearch" placeholder="{{trans('validation.attributes.name')}}" class="form-control" maxlength="50" ng-model="paginationOptions.name">
         </div>
-    </section>
+        <div class="pagination-filter-field">
+          <input type="text" id="emailAdvancedSearch" placeholder="{{trans('validation.attributes.email')}}" class="form-control" maxlength="50" ng-model="paginationOptions.email">
+        </div>
+        <div class="pagination-filter-field" >
+          <select id="roleAdvancedSearch" class="select" data-ng-options="role.description for role in userRoles" data-ng-model="paginationOptions.role">
+          </select>
+        </div>
+        <button class="btn btn-primary" type="submit" ng-click="filter(false)">
+          <span class="fontello fontello-search"></span>
+        </button>
+      </div>
+      <div class="col-lg-12 col-md-12 col-sm-12 pagination-normal-filter fadein nopadding-xs">
+        <div class="search-name">
+          <div class="input-group">
+            <input type="text" id="nameSearch" placeholder="{{trans('validation.attributes.name')}}" class="form-control" maxlength="50" ng-model="paginationOptions.name">
+            <span aria-hidden="true" class="fontello-search input-group-addon search-button" ng-click="filter(false)"></span>
+          </div>
+        </div>
+      </div>
+			<menuitem class="icon-item menu-icon" ng-click="advancedSearchActive = !advancedSearchActive;resetAdvancedSearch()" ng-class="{contrasted:advancedSearchActive}" background-constrant>
+        <figure class="icon-circle">
+          <span class="fontello fontello-search"></span>
+        </figure>
+        <sub class="icon-text">
+        {[{advancedSearchActive && '{{trans('pagination.search.normal')}}' || '{{trans('pagination.search.advanced')}}'}]}
+        </sub>
+      </menuitem>
+		</div>
+	  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 nopadding-xs"><div ui-grid="gridOptions" ui-grid-pagination class="users-grid"></div></div>
+	  <nav class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pagination-container" ng-hide="paginationOptions.lastPage<=1">
+	    <ul class="pagination">
+	      <li class="angle" ng-class="{disabled:paginationOptions.currentPage==1}">
+	        <a href="#" aria-label="Previous"  data-ng-click="getPage(1)">
+	          <span aria-hidden="true" class="fontello-angle-double-left"></span>
+	        </a>
+	      </li>
+
+	      <li ng-hide="paginationOptions.currentPage==1">
+	        <a href="#" ng-click="getPage(paginationOptions.currentPage - 1)">
+	          {[{paginationOptions.currentPage - 1}]}
+	        </a>
+	      </li>
+	      <li class="active"><a href="#">{[{paginationOptions.currentPage}]}</a></li>
+	      <li ng-hide="paginationOptions.currentPage==paginationOptions.lastPage">
+	        <a href="#" ng-click="getPage(paginationOptions.currentPage + 1)">
+	          {[{paginationOptions.currentPage + 1}]}
+	        </a>
+	      </li>
+
+	      <li class="angle" ng-class="{disabled:paginationOptions.currentPage==paginationOptions.lastPage}">
+	        <a href="#" aria-label="Next"  data-ng-click="getPage(paginationOptions.lastPage)">
+	          <span aria-hidden="true" class="fontello-angle-double-right"></span>
+	        </a>
+	      </li>
+	    </ul>
+	  </nav>
+	  <div class="col-lg-6 col-md-6 col-sm-6 counter-container link-color" ng-hide="paginationOptions.total==0">
+			{[{(paginationOptions.perPage * paginationOptions.currentPage)- paginationOptions.perPage + 1}]} - {[{(paginationOptions.perPage * paginationOptions.currentPage) > paginationOptions.total && paginationOptions.perPage * paginationOptions.currentPage - ((paginationOptions.perPage * paginationOptions.currentPage) - paginationOptions.total)  || (paginationOptions.perPage * paginationOptions.currentPage) }]} {{trans('pagination.search.of')}} {[{paginationOptions.total}]} {{trans('pagination.search.users')}}
+	  </div>
+	</div>
 @stop

@@ -3,6 +3,15 @@
   min-height: 100%;
   height: 100%;
   height: 100vh;
+  .main-content
+  {
+    height: auto;
+    height: calc(100% - #{$header-height + $header-margin-bottom});
+    @include into-xs()
+    {
+      height: calc(100% - #{$header-height-small  + $header-margin-bottom});
+    }
+  }
 }
 .center-container
 {
@@ -66,5 +75,19 @@
 
   }
 }
-
-
+//------------------------------for messages----------------------------------
+.messages
+{
+  @include into-sm-md-lg()
+  {
+    min-height: 48px;
+  }
+  .alert
+  {
+    display: none;
+    strong
+    {
+      font-weight: bold;
+    }
+  }
+}

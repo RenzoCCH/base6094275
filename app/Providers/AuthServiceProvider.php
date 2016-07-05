@@ -37,6 +37,9 @@ class AuthServiceProvider extends ServiceProvider
 		$gate->define('home',function(){
 			return ((Request::path()==='/' || Request::path()=='home' || Request::path() == '')?true:false);
 		});
+		$gate->define('admin/users',function(){
+			return (strpos(Request::path(),'admin/users') === false ?true:false);
+		});
 		$gate->define('ismobile',function(){
 			$agent = new Agent();
 			return $agent->isMobile();

@@ -1,0 +1,112 @@
+.users-grid
+{
+  height: 646px;
+  background-color: $background-white;
+  .ui-grid-viewport
+  {
+    overflow-y: scroll;
+  }
+}
+.pagination-container
+{
+  text-align: center;
+  @include into-xs()
+  {
+    padding: 0 !important;
+  }
+  @include into-sm-md-lg()
+  {
+    text-align: left;
+  }
+  .pagination
+  {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    .angle
+    {
+      a{
+        padding-left: 6px;
+        padding-right: 6px;
+      }
+    }
+  }
+}
+.counter-container
+{
+  height: 49px;
+  text-align: right;
+  padding-top: 16px;
+  @include into-xs()
+  {
+    display: none;
+  }
+}
+.search-button
+{
+  cursor: pointer;
+}
+.pagination-filter{
+  position: relative;
+  .pagination-advanced-filter
+  {
+    display: none;
+    margin-bottom: 20px;
+    .pagination-filter-field
+    {
+      display: inline-block;
+      vertical-align: top;
+      padding-right: 10px;
+      width: 300px;
+      @include into-md()
+      {
+        width: 210px;
+      }
+      @include into-sm()
+      {
+        width: 180px;
+      }
+    }
+  }
+  .pagination-normal-filter
+  {
+    margin-bottom: 20px;
+    .search-name
+    {
+      vertical-align: top;
+      padding-right: 10px;
+      width: 375px;
+      display: inline-block;
+      @include into-xs()
+      {
+        width: 100%;
+        padding-right: 0;
+      }
+    }
+  }
+  .icon-item
+  {
+    position: absolute;
+    top: 0;
+    right: 15px;
+    display: none;
+    @include into-sm-md-lg()
+    {
+      display: block;
+    }
+  }
+  &.active
+  {
+    .pagination-advanced-filter{
+      display: none;
+      @include into-sm-md-lg()
+      {
+        display: block;
+      }
+    }
+    .pagination-normal-filter
+    {
+      display: none;
+    }
+  }
+}
+

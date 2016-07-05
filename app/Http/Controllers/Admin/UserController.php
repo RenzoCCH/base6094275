@@ -11,19 +11,21 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Contracts\Support\Jsonable;
 
 class UserController extends Controller
 {
 
     public function index()
     {
-        $users = User::orderBy('id')->paginate(10);
-        return view('admin.users.index',compact('users'));
+//        $users = User::orderBy('id')->paginate(10);
+//        return view('admin.users.index',compact('users'));
+        return view('admin.users.index');
     }
     public function create()
     {
         //
-    }
+				    }
     public function store(Request $request)
     {
         //
@@ -53,4 +55,18 @@ class UserController extends Controller
         Session::flash('message',trans('home.messages.delete_user_suceed', ['name' => $user->name]));
         return redirect()->route('admin.users.index');
     }
+	public function usersAjax(Request $request)
+	{
+		if ($request->ajax())
+		{
+			$paginator = User::orderBy('name')->Where('name', 'ilike', '%'.$request->input('name').'%' );
+			if($request->has('email'))
+			{	$paginator=$paginator->Where('email', 'ilike', '%'.$request->input('email').'%' );}
+			if($request->has('role'))
+			{	$paginator=$paginator->Where('roles_id',$request->input('role') );}
+			$paginator=$paginator->paginate(20)->toJson();
+			return $paginator;
+		}
+		else return redirect('/');
+	}
 }

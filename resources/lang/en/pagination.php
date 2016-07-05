@@ -15,5 +15,12 @@ return [
 
     'previous' => '&laquo; Previous',
     'next'     => 'Next &raquo;',
-
+	'search'  => [
+		'normal' => 'Normal Search',
+		'advanced'    => 'Advanced Search',
+		'of' => 'of',
+		'users' =>'users',
+		'user_categories'=>'All,Administrator,User',
+		'grid_titles'=>'Name,Email,Rol',
+	],
 ];

@@ -15,6 +15,13 @@ input:-webkit-autofill,input:focus {
 {
   padding: 0 !important;
 }
+.nopadding-xs
+{
+  @include into-xs()
+  {
+    padding: 0 !important;
+  }
+}
 a:hover
 {
   text-decoration: none !important;

@@ -20,3 +20,39 @@ app.factory('screenWidthService', function () {
   else return false;
   return true;
 }])
+.factory('message',function ($timeout) {
+    return {
+      message: function(mode,content,advice) {
+        var mcontainer=$('.messages');
+        if(mcontainer.length)
+        {
+          message=mcontainer.find(".alert");
+          message.removeClass('alert-success').removeClass('alert-info').removeClass('alert-warning');
+          switch (mode) {
+            case 'success':
+              message.addClass('alert-success');
+              break;
+            case 'info':
+              message.addClass('alert-info');
+              break;
+            case 'warning':
+              message.addClass('alert-warning');
+              break;
+          }
+          message.find('#content').html(content);
+          message.find('#advice').html(advice);
+          message.fadeIn();
+          $timeout(function(){
+            message.fadeOut();
+          },10000);
+        }
+      },
+      hideMessage: function(){
+        var mcontainer=$('.messages');
+        if(mcontainer.length) {
+          message = mcontainer.find(".alert");
+          message.css('display','none');
+        }
+      }
+    };
+})

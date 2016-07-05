@@ -93,7 +93,7 @@ class AuthController extends Controller
     {
         return property_exists($this, 'loginPath') ? $this->loginPath : route('login');
     }
-	//	to verifi is thr email is unique
+	//	to verifi if the email is unique
 	public function postEmailVerification(Request $request)
 	{
 		if($request->ajax()) {

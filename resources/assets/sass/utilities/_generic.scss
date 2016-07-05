@@ -47,6 +47,7 @@ span.error {
   text-align: center;
   margin: 5px;
   padding-bottom: 20px;
+  cursor: pointer;
   .icon-circle
   {
     display: block;
@@ -102,6 +103,16 @@ span.error {
     }
   }
 }
+.menu-icon // for icons individuals
+{
+  float: right;
+  margin: 0;
+  .icon-circle
+  {
+    height: 35px;
+    width: 35px;
+  }
+}
 //---------------------------------------------------------------------------------------------------------------------------------------------------------------
 //                                        POSITION STYLES
 //---------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -113,3 +124,42 @@ span.error {
 {
   float: left;
 }
+//---------------------------------------------------------------------------------------------------------------------------------------------------------------
+//                                        SELECTS
+//---------------------------------------------------------------------------------------------------------------------------------------------------------------
+.select
+{
+  display: block;
+  width: 100%;
+  height: 34px;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #A19797;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  -webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+  -moz-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+  -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+//  /* make arrow and background */
+//
+//  background:
+//  linear-gradient(45deg, white 50%, #CCC 50%),
+//  linear-gradient(135deg, #ccc 50%, white 50%),
+//  linear-gradient(to right, white, white);
+//  background-position:
+//  calc(100% - 21px) calc(1em + 2px),
+//  calc(100% - 16px) calc(1em + 2px),
+//  100% 0;
+//  background-size:
+//  5px 5px,
+//  5px 5px,
+//  2.5em 2.5em;
+//  background-repeat: no-repeat;
+}
+
