@@ -64,13 +64,8 @@ class UserController extends Controller
 			{	$paginator=$paginator->Where('email', 'ilike', '%'.$request->input('email').'%' );}
 			if($request->has('role'))
 			{	$paginator=$paginator->Where('roles_id',$request->input('role') );}
-
 			$paginator=$paginator->paginate(20)->toJson();
-
 			return $paginator;
-//				->Where('email', 'ilike', '%'.$request->input('email').'%' )
-//				->Where('roles_id',$request->input('role') )
-
 		}
 		else return redirect('/');
 	}

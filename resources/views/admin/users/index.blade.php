@@ -7,6 +7,7 @@
 		<div class="pagination-filter" ng-class="{active:advancedSearchActive}">
 			<div class="col-lg-12 col-md-12 col-sm-12 pagination-advanced-filter fadein">
 				<input type="hidden" id="user_categories" value="{{trans('pagination.search.user_categories')}}"/>
+				<input type="hidden" id="grid_titles" value="{{trans('pagination.search.grid_titles')}}"/>
         <div class="pagination-filter-field">
           <input type="text" id="nameAdvancedSearch" placeholder="{{trans('validation.attributes.name')}}" class="form-control" maxlength="50" ng-model="paginationOptions.name">
         </div>

@@ -1,7 +1,7 @@
 app.controller('userGridController', ['$scope','$http','message',function ($scope,$http,message) {
   $scope.myData = [];
   $scope.advancedSearchActive = false;
-  $scope.userRoles = [{id: 0, description:'All'}];
+  $scope.userRoles = [{id:0,description:'All'}];
   $scope.paginationOptions = {
     currentPage: 1,
     total: 0,
@@ -16,22 +16,28 @@ app.controller('userGridController', ['$scope','$http','message',function ($scop
     lastPage:0,
     digest:false
   };
-  console.log($("#user_categories").val());
+  if($("#grid_titles").length)
+  {
+    var gridTitles=$("#grid_titles").val().split(",");
+  }
   $scope.gridOptions = {
     columnDefs: [
-      { name: 'name' },
-      { name: 'email' },
-      { name: 'roles_id' },
-    ]
+      { field:'name',name: gridTitles[0] },
+      { field:'email',name: gridTitles[1] },
+      { field:'roles_id',name: gridTitles[2]},
+    ],
+    enableColumnMenus:false
   };
-  $http({
-    method: 'GET',
-    url:'/admin/roles/rolesAjax'
-  }).then(function successCallback(response) {
-    $scope.userRoles=$scope.userRoles.concat(response.data);
-  }, function errorCallback(response) {
-    alert('an error it couldn receive the json');
-  });
+  if($("#user_categories").length)
+  {
+    $scope.userRoles = [];
+    var roles=$("#user_categories").val().split(",");
+    for (var i = 0; i < roles.length; i++) {
+      role = {id: i, description: roles[i]};
+      $scope.userRoles.push(role);
+      console.log($scope.userRoles[i]);
+    }
+  }
   //--------------------------------methods
   $scope.gridOptionsNext = function()
   {
