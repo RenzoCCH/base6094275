@@ -1,4 +1,13 @@
-var app = angular.module('app', ['ui.grid'])
+///////////////////////////////////////////LOCALIZATION///////////////////////////////////////////////////
+var components = [];
+if(window.location.pathname == "/login" || window.location.pathname.startsWith('/password'))
+{
+  $.validator.setDefaults({
+    errorElement: 'span'
+  });
+}
+////////////////////////////////////////////ANGULAR////////////////////////////////////////////////////////
+var app = angular.module('app', components)
   .config(function ($interpolateProvider) {
     $interpolateProvider.startSymbol('{[{').endSymbol('}]}');
   })
@@ -11,12 +20,9 @@ var app = angular.module('app', ['ui.grid'])
     else $rootScope.contrastedBackground = false;
   })
   .constant("Modernizr", Modernizr);
-
+///////////////////////////////////////////JQUERY/////////////////////////////////////////////////////////////
 $.ajaxSetup({
   headers: {
     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
   }
-});
-$.validator.setDefaults({
-  errorElement: 'span'
 });
