@@ -6,6 +6,6 @@ Homestead.json
 /resources/assets/.sass-cache
 /.idea
 /node_modules
-/public/bower_components
+/public/bower_components/*
 /public/assets/css/*
 /public/assets/dist/*

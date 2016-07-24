@@ -48,7 +48,6 @@ class AuthServiceProvider extends ServiceProvider
 			$agent = new Agent();
 			return $agent->isPhone();
 		});
-
 	}
 }
 
