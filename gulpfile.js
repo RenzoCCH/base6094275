@@ -89,7 +89,7 @@ gulp.task('footer-concat', ['concat-angular-jquery','concat-angular-jquery-valid
     return gulp.src(['public/bower_components/jquery/dist/jquery.min.js',
       'public/bower_components/angular/angular.min.js',
       'public/bower_components/jquery-validation/dist/jquery.validate.min.js',
-      'public/bower_components/angular-ui-grid/ui-grids.min.js',
+      'public/bower_components/angular-ui-grid/ui-grid.min.js',
       'public/assets/dist/js/app.min.js'])
       .pipe(concat('AngularJqueryUigrid.min.js'))
       .pipe(gulp.dest('public/assets/dist/js'));

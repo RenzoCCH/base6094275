@@ -2,7 +2,7 @@
   <figure class="logo-container">
       <img src="/img/logo_title.png" alt=""/>
   </figure>
-  {{--@can('isphone')--}}
+	  {{--@can('isphone')--}}
   <button class="reset-button float-right icon-item icon-menu-small visible-xs" ng-controller="smallNavBarController" background-constrant>
       <figure class="icon-circle">
         <span class="fontello fontello-menu" aria-hidden="true"></span>
@@ -11,7 +11,7 @@
   {{--@endcan--}}
   <ul class="navbar-icon-container icon-container">
     @cannot('home')
-    <li class="icon-item" background-constrant>
+    <li class="icon-item">
       <a href="/">
         <figure class="icon-circle">
 				  <span class="fontello fontello-home" aria-hidden="true"></span>
@@ -22,7 +22,7 @@
     @endcan
     @can('crud-users')
 			@can('admin/users')
-    <li class="icon-item" background-constrant>
+    <li class="icon-item">
       <a href="{{route('admin.users.index')}}">
         <figure class="icon-circle">
           <span class="fontello fontello-users"></span>
@@ -32,7 +32,7 @@
     </li>
       @endcan
     @endcan
-    <li class="icon-item" background-constrant>
+    <li class="icon-item">
       <a href="{{route('user/edition')}}">
         <figure class="icon-circle">
           <span class="fontello fontello-user"></span>
@@ -40,7 +40,7 @@
         <sub class="icon-text">{{trans("auth.edit_profile")}}</sub>
       </a>
     </li>
-    <li class="icon-item" background-constrant>
+    <li class="icon-item">
       <a href="{{route('logout')}}">
         <figure class="icon-circle">
 	        <span class="fontello fontello-logout" aria-hidden="true"></span>

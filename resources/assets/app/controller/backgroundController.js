@@ -9,7 +9,6 @@ app.controller('backgroundController', ['$scope','$rootScope','screenWidthServic
 
   function makerainthunderday() {
     $('html').addClass("dialluvioso");
-    if (isBackgroundAllowed) {
       var cloudsnumber;
       if (screenWidthService == 'md' || screenWidthService == 'lg') {
         cloudsnumber = 8;
@@ -28,12 +27,10 @@ app.controller('backgroundController', ['$scope','$rootScope','screenWidthServic
         $('body').append(cloud.getCloud());
       }
       addThunder(cloudsnumber);
-    }
   }
 
   function makerainthundernight() {
     $('html').addClass("noche");
-    if (isBackgroundAllowed) {
       var cloudsnumber;
       if (screenWidthService == 'md' || screenWidthService == 'lg') {
         cloudsnumber = 8;
@@ -54,12 +51,10 @@ app.controller('backgroundController', ['$scope','$rootScope','screenWidthServic
       var moon = new Moon();
       $('body').append(moon.getSun());
       addThunder(cloudsnumber);
-    }
   }
 
   function makerainnight() {
     $('html').addClass("noche");
-    if (isBackgroundAllowed) {
       var cloudsnumber;
       if (screenWidthService == 'md' || screenWidthService == 'lg') {
         cloudsnumber = 12;
@@ -79,12 +74,10 @@ app.controller('backgroundController', ['$scope','$rootScope','screenWidthServic
       }
       var moon = new Moon();
       $('body').append(moon.getSun());
-    }
   }
 
   function makerainday() {
     $('html').addClass("dialluvioso");
-    if (isBackgroundAllowed) {
       var cloudsnumber;
       if (screenWidthService == 'md' || screenWidthService == 'lg') {
         cloudsnumber = 12;
@@ -102,7 +95,6 @@ app.controller('backgroundController', ['$scope','$rootScope','screenWidthServic
         var cloud = new CloudRain();
         $('body').append(cloud.getCloud());
       }
-    }
   }
 
   function makesnownight() {
@@ -168,7 +160,6 @@ app.controller('backgroundController', ['$scope','$rootScope','screenWidthServic
   //------for night--------------------
   function makenight() {
     $('html').addClass("noche");
-    if (isBackgroundAllowed) {
       var starnumber;
       var cloudsnumber;
       if (screenWidthService == 'md' || screenWidthService == 'lg') {
@@ -193,13 +184,11 @@ app.controller('backgroundController', ['$scope','$rootScope','screenWidthServic
       }
       var moon = new Moon();
       $('body').append(moon.getSun());
-    }
   }
 
   //-----------for day----------
   function makeday() {
     $('html').addClass("dia");
-    if (isBackgroundAllowed) {
       var cloudsnumber;
       if (screenWidthService == 'md' || screenWidthService == 'lg') cloudsnumber = 10;
       else if (screenWidthService == 'sm') cloudsnumber = 7;
@@ -212,7 +201,6 @@ app.controller('backgroundController', ['$scope','$rootScope','screenWidthServic
       }
       var sun = new Sun();
       $('body').append(sun.getSun());
-    }
   }
 
   var Cloud = function () {
@@ -401,34 +389,40 @@ app.controller('backgroundController', ['$scope','$rootScope','screenWidthServic
     return Math.floor(Math.random() * (max - min + 1) + min);
   }
   function backgroundController(random) {
-    switch (random) {
-      case 1:
-        makeday();
-        break;
-      case 2:
-        makenight();
-        break;
-      case 3:
-        makesnowday();
-        break;
-      case 4:
-        makesnownight();
-        break;
-      case 5:
-        makerainday();
-        break;
-      case 6:
-        makerainnight();
-        break;
-      case 7:
-        makerainthundernight();
-        break;
-      case 8:
-        makerainthunderday();
-        break;
+    if(isBackgroundAllowed)
+    {
+      switch (random) {
+        case 1:
+          makeday();
+          break;
+        case 2:
+          makenight();
+          break;
+        case 3:
+          makesnowday();
+          break;
+        case 4:
+          makesnownight();
+          break;
+        case 5:
+          makerainday();
+          break;
+        case 6:
+          makerainnight();
+          break;
+        case 7:
+          makerainthundernight();
+          break;
+        case 8:
+          makerainthunderday();
+          break;
 
-      default:
-        makeday();
+        default:
+          makeday();
+      }
+    }
+    else{
+      $('html').addClass("noche");
     }
   }
     backgroundController($rootScope.randomBackground);
