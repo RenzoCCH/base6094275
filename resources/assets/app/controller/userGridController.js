@@ -35,7 +35,6 @@ app.controller('userGridController', ['$scope','$http','message',function ($scop
     for (var i = 0; i < roles.length; i++) {
       role = {id: i, description: roles[i]};
       $scope.userRoles.push(role);
-      console.log($scope.userRoles[i]);
     }
   }
   //--------------------------------methods

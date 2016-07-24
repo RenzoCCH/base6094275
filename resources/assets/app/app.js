@@ -6,6 +6,10 @@ if(window.location.pathname == "/login" || window.location.pathname.startsWith('
     errorElement: 'span'
   });
 }
+if(window.location.pathname == "/admin/users")
+{
+  components = ['ui.grid'];
+}
 ////////////////////////////////////////////ANGULAR////////////////////////////////////////////////////////
 var app = angular.module('app', components)
   .config(function ($interpolateProvider) {
