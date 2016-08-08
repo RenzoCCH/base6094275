@@ -90,4 +90,13 @@
       font-weight: bold;
     }
   }
+  .messages-cancel
+  {
+    @include transition(1s ease-in);
+    &:hover
+    {
+      cursor:pointer;
+      color: red;
+    }
+  }
 }

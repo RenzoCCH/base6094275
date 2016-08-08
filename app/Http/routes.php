@@ -75,6 +75,7 @@ Route::group(['prefix' => 'admin','namespace' => 'Admin','middleware'=>array('au
 	Route::get('/users/usersAjax', ['as'=>'admin.users.usersAjax','uses'=>'UserController@usersAjax']);
 	Route::get('/roles/rolesAjax', ['as'=>'admin.roles.rolesAjax','uses'=>'RolesController@rolesAjax']);
 	Route::get('/users/{users}/destroy', ['as'=>'admin.users.delete','uses'=>'UserController@destroy']);
+	Route::put('/users/cancelUpdate', ['as'=>'admin.users.cancelUpdate','uses'=>'UserController@cancelUpdate']);
 	Route::resource('users','UserController');
 
 });

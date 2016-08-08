@@ -18,14 +18,12 @@ class UserController extends Controller
 
     public function index()
     {
-//        $users = User::orderBy('id')->paginate(10);
-//        return view('admin.users.index',compact('users'));
         return view('admin.users.index');
     }
     public function create()
     {
         //
-				    }
+	}
     public function store(Request $request)
     {
         //
@@ -42,12 +40,29 @@ class UserController extends Controller
     }
     public function update(EditUserRequest $request, $id)
     {
-        $user= User::findOrFail($id);
+		$user= User::findOrFail($id);
+		Session::flash('last_user', $user['attributes']);
         $user->fill($request->all());
         $user->save();
-        Session::flash('message',trans('home.messages.edit_user_suceed', ['name' => $user->name]));
-        return redirect()->route('admin.users.index');
+		Session::flash('message',trans('home.messages.edit_user_suceed', ['name' => $user->name]));
+		if($request->ajax())
+		{
+			return session('message');
+		}
+		else{
+
+			return redirect()->route('admin.users.index');
+		}
     }
+
+	public function cancelUpdate(){
+		$user=User::findOrFail(session('last_user')['id']);
+		$user->name=session('last_user')['name'];
+		$user->email=session('last_user')['email'];
+		$user->roles_id=session('last_user')['roles_id'];
+		$user->save();
+		return session('last_user');
+	}
     public function destroy($id)
     {
         $user=User::findOrFail($id);

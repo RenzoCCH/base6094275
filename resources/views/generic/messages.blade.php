@@ -1,10 +1,11 @@
-<div class="container messages">
-	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 nopadding-xs">
-		<div class="alert fadein">
-      <strong id="advice"></strong>
-      <span id="content">
-      </span>
-    </div>
-	</div>
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 nopadding-xs messages" ng-controller="messagesController">
+	<div class="fadein alert">
+    <strong  id="messageAdvice"></strong>
+    <span id="messageContent" ></span>
+    {{-----------------------the url of cancel will always be on put cation--------------------------------}}
+    <span id="messageCancel" class='messages-cancel' ng-click='cancelAction()'>
+    Cancel
+    </span>
+  </div>
 </div>
 

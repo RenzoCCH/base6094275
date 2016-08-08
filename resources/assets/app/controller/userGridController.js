@@ -1,7 +1,7 @@
 app.controller('userGridController', ['$scope','$http','message',function ($scope,$http,message) {
   $scope.myData = [];
   $scope.advancedSearchActive = false;
-  $scope.userRoles = [{id:0,description:'All'}];
+  $scope.userRoles = [{id:0,value:'All'}];
   $scope.paginationOptions = {
     currentPage: 1,
     total: 0,
@@ -20,23 +20,30 @@ app.controller('userGridController', ['$scope','$http','message',function ($scop
   {
     var gridTitles=$("#grid_titles").val().split(",");
   }
-  $scope.gridOptions = {
-    columnDefs: [
-      { field:'name',name: gridTitles[0] },
-      { field:'email',name: gridTitles[1] },
-      { field:'roles_id',name: gridTitles[2]},
-    ],
-    enableColumnMenus:false
-  };
   if($("#user_categories").length)
   {
     $scope.userRoles = [];
     var roles=$("#user_categories").val().split(",");
     for (var i = 0; i < roles.length; i++) {
-      role = {id: i, description: roles[i]};
+      role = {id: i, value: roles[i]};
       $scope.userRoles.push(role);
     }
   }
+  $scope.gridOptions = {
+    columnDefs: [
+      { field:'name',name: gridTitles[0] },
+      { field:'email',name: gridTitles[1] },
+      { field:'roles_id'
+        ,name: gridTitles[2],
+        editableCellTemplate: 'ui-grid/dropdownEditor',
+        editDropdownOptionsArray: $scope.userRoles.slice(1, 3),
+        editDropdownIdLabel: 'id', editDropdownValueLabel: 'value',
+        cellFilter:'mapRol'
+       },
+    ],
+    enableColumnMenus:false
+  };
+
   //--------------------------------methods
   $scope.gridOptionsNext = function()
   {
@@ -78,10 +85,10 @@ app.controller('userGridController', ['$scope','$http','message',function ($scop
         $scope.paginationOptions.perPage=response.data.per_page;
         if(!response.data.total)// to set the messsage....
         {
-          message.message('info','No reigster were found','Information:');
+          message.message('info',$('#message_no_records').val(),{advice:$('#message_info').val()});
         }
       }, function errorCallback(response) {
-        message.message('warning',"Sorry, we could not connect to te server.",'');
+        message.message('warning',$('#message_no_connection').val());
       });
     }
     else {
@@ -95,7 +102,6 @@ app.controller('userGridController', ['$scope','$http','message',function ($scop
         $scope.$digest()
       }
     }
-    message.hideMessage();
   };
   $scope.filter = function(digest)
   {
@@ -111,6 +117,36 @@ app.controller('userGridController', ['$scope','$http','message',function ($scop
   }
 
   $scope.getPage($scope.paginationOptions.currentPage);
+
+
+
+  $scope.gridOptions.onRegisterApi = function(gridApi){
+    $scope.gridApi = gridApi;
+    gridApi.edit.on.afterCellEdit($scope,function(rowEntity, colDef, newValue, oldValue){
+      if(newValue==''){
+        rowEntity[colDef.field]=oldValue;
+        message.message('success',colDef.name+$("#message_no_empty").val());
+      }
+      else
+      {
+        if(oldValue!==newValue)
+        {
+          $.ajax({
+            url: '/admin/users/'+rowEntity.id,
+            type: 'PUT',
+            data: {"name":rowEntity.name,"email":rowEntity.email,"roles_id":rowEntity.roles_id},
+            success: function(data) {
+              message.message('success',data,{advice:$('#message_success').val(),cancel:'/admin/users/cancelUpdate'});
+            },
+            error: function (data) {
+              message.message('warning',JSON.parse(data.responseText));
+            }
+          });
+        }
+      }
+    });
+  };
+
   //-------------------jquery implementatiaons--------
   $(function(){
     $('#nameSearch').val('');
@@ -122,7 +158,18 @@ app.controller('userGridController', ['$scope','$http','message',function ($scop
       }
     });
   });
-}]);
+}])
+.filter('mapRol', function() {
+  var roles=$("#user_categories").val().split(",");
+  return function(input) {
+    if (!input){
+      return '';
+    } else {
+      return roles[input];
+    }
+  };
+});
+
 
 
 

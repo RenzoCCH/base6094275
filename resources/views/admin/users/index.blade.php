@@ -2,12 +2,19 @@
 @extends('layout')
 
 @section('content')
-	@include('generic.messages')
+
 	<div class="container" ng-controller="userGridController">
+		@include('generic.messages')
 		<div class="pagination-filter" ng-class="{active:advancedSearchActive}">
 			<div class="col-lg-12 col-md-12 col-sm-12 pagination-advanced-filter fadein">
 				<input type="hidden" id="user_categories" value="{{trans('pagination.search.user_categories')}}"/>
 				<input type="hidden" id="grid_titles" value="{{trans('pagination.search.grid_titles')}}"/>
+				<input id="message_info" value="{{trans('messages.messages_advice.message_info')}}" type="hidden"/>
+				<input id="message_warning" value="{{trans('messages.messages_advice.message_warning')}}" type="hidden"/>
+				<input id="message_success" value="{{trans('messages.messages_advice.message_success')}}" type="hidden"/>
+				<input id="message_no_records" value="{{trans('messages.message_no_records')}}" type="hidden"/>
+				<input id="message_no_connection" value="{{trans('messages.message_no_connection')}}" type="hidden"/>
+				<input id="message_no_empty" value="{{trans('messages.message_no_empty')}}" type="hidden"/>
         <div class="pagination-filter-field">
           <input type="text" id="nameAdvancedSearch" placeholder="{{trans('validation.attributes.name')}}" class="form-control" maxlength="50" ng-model="paginationOptions.name">
         </div>
@@ -15,7 +22,7 @@
           <input type="text" id="emailAdvancedSearch" placeholder="{{trans('validation.attributes.email')}}" class="form-control" maxlength="50" ng-model="paginationOptions.email">
         </div>
         <div class="pagination-filter-field" >
-          <select id="roleAdvancedSearch" class="select" data-ng-options="role.description for role in userRoles" data-ng-model="paginationOptions.role">
+          <select id="roleAdvancedSearch" class="select" data-ng-options="role.value for role in userRoles" data-ng-model="paginationOptions.role">
           </select>
         </div>
         <button class="btn btn-primary" type="submit" ng-click="filter(false)">
@@ -39,7 +46,7 @@
         </sub>
       </menuitem>
 		</div>
-	  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 nopadding-xs"><div ui-grid="gridOptions" ui-grid-pagination class="users-grid"></div></div>
+	  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 nopadding-xs"><div ui-grid="gridOptions" ui-grid-pagination ui-grid-edit class="users-grid"></div></div>
 	  <nav class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pagination-container" ng-hide="paginationOptions.lastPage<=1">
 	    <ul class="pagination">
 	      <li class="angle" ng-class="{disabled:paginationOptions.currentPage==1}">
