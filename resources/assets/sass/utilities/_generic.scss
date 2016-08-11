@@ -1,6 +1,20 @@
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------
 //                                        MESSAGES
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------
+.advice
+{
+  width: 100%;
+  margin-top: 3px;
+  margin-bottom: 3px;
+  display: block;
+  text-align: center;
+  padding: 3px;
+  @include setfadein();
+  @include border-radius(4px);
+  ul{
+    margin-bottom: 0px;
+  }
+}
 .warning
 {
   background-color: $warning-notification;

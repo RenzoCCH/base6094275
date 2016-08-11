@@ -46,7 +46,7 @@
         </sub>
       </menuitem>
 		</div>
-	  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 nopadding-xs"><div ui-grid="gridOptions" ui-grid-pagination ui-grid-edit class="users-grid"></div></div>
+	  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 nopadding-xs"><div ui-grid="gridOptions" ui-grid-pagination ui-grid-edit ui-grid-cellNav class="users-grid"></div></div>
 	  <nav class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pagination-container" ng-hide="paginationOptions.lastPage<=1">
 	    <ul class="pagination">
 	      <li class="angle" ng-class="{disabled:paginationOptions.currentPage==1}">

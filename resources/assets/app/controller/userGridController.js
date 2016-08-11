@@ -1,4 +1,4 @@
-app.controller('userGridController', ['$scope','$http','message',function ($scope,$http,message) {
+app.controller('userGridController', ['$scope','$http','message','ismobile',function ($scope,$http,message,ismobile) {
   $scope.myData = [];
   $scope.advancedSearchActive = false;
   $scope.userRoles = [{id:0,value:'All'}];
@@ -30,21 +30,62 @@ app.controller('userGridController', ['$scope','$http','message',function ($scop
     }
   }
   $scope.gridOptions = {
+    //modifierKeysToMultiSelectCells: true,
+    enableCellEditOnFocus: !ismobile,
     columnDefs: [
-      { field:'name',name: gridTitles[0] },
-      { field:'email',name: gridTitles[1] },
+      { field:'name',name: gridTitles[0],allowCellFocus : !ismobile  },
+      { field:'email',name: gridTitles[1],visible: !ismobile },
       { field:'roles_id'
         ,name: gridTitles[2],
         editableCellTemplate: 'ui-grid/dropdownEditor',
         editDropdownOptionsArray: $scope.userRoles.slice(1, 3),
         editDropdownIdLabel: 'id', editDropdownValueLabel: 'value',
-        cellFilter:'mapRol'
-       },
+        cellFilter:'mapRol',
+        visible: !ismobile
+      },
+      {
+        name:gridTitles[3],
+        cellTemplate: '<ul class="list-inline center-block text-center">' +
+                      '<li><button class="btn btn-default btn-sm" ng-click="grid.appScope.editUser(row.entity.id)"><span class="fontello fontello-cog"></span></button></li>' +
+                      '<li><button class="btn btn-default btn-sm" ng-click="grid.appScope.deleteUser(row.entity.id)"><span class="fontello fontello-trash-empty"></span></button></li></ul>',
+        allowCellFocus : false,
+        enableCellEdit: false,
+        width:(ismobile ? 100 : 130)
+      }
     ],
     enableColumnMenus:false
   };
 
   //--------------------------------methods
+  $scope.editUser = function (id) {
+    console.log(id);
+  }
+  $scope.deleteUser = function (id) {
+    $http({
+      method: 'GET',
+      url: '/admin/users/'+id+'/destroy'
+    }).then(function successCallback(response) {
+      $scope.myData = [];
+      $scope.paginationOptions = {
+        currentPage: 1,
+        total: 0,
+        lastPage:0,
+        perPage:0,
+        name:'',
+        email:'',
+        role:$scope.userRoles[0]
+      };
+      $scope.paginationOptionsStorage = {
+        total: 0,
+        lastPage:0,
+        digest:false
+      };
+      $scope.getPage($scope.paginationOptions.currentPage);
+      message.message('warning',response.data,{cancel:'/admin/users/cancelDestroy'});
+    }, function errorCallback(response) {
+      message.message('warning',$('#message_no_connection').val());
+    });
+  }
   $scope.gridOptionsNext = function()
   {
     if($scope.paginationOptions.currentPage!=$scope.paginationOptions.lastPage)
@@ -155,6 +196,12 @@ app.controller('userGridController', ['$scope','$http','message',function ($scop
       if(e.keyCode == 13)
       {
         $scope.filter(true);
+      }
+    });
+    $(document).keydown(function (e) {
+      if(e.keyCode == 40 && !ismobile)
+      {
+        $scope.gridApi.cellNav.scrollToFocus( $scope.gridOptions.data[0], $scope.gridOptions.columnDefs[0]);
       }
     });
   });

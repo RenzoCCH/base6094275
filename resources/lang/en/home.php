@@ -11,6 +11,7 @@ return [
         'edit_suceed'=>'Change succesfull',
         'edit_user_suceed'=>':name was edited.',
         'delete_user_suceed'=>':name was deleted.',
+		'restore_user_suceed'=>':name was restored.',
     ],
     'buttons' => [
         'edit_button'=>'Edit',

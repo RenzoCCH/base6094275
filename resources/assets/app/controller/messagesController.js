@@ -64,6 +64,16 @@ app.controller('messagesController', ['$scope','$timeout',function ($scope,$time
     $scope.cancel='';
     $scope.displayMessage();
   }
+  function checkMessageFromPost()
+  {
+    if($('#messageContent').html() != '')
+    {
+      $scope.mode='success';
+      $scope.content=$('#messageContent').html();
+      $scope.displayMessage();
+    }
+  }
+  checkMessageFromPost();
   $scope.$on('messageCalled', function(event, data) {
     $scope.mode=data.mode;
     if(data.content !== null && typeof data.content === 'object')

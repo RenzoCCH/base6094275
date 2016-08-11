@@ -61,15 +61,34 @@ class UserController extends Controller
 		$user->email=session('last_user')['email'];
 		$user->roles_id=session('last_user')['roles_id'];
 		$user->save();
+		Session::flash('message',trans('home.messages.restore_user_suceed', ['name' => $user->name]));
 		return session('last_user');
 	}
-    public function destroy($id)
+    public function destroy(Request $request,$id)
     {
         $user=User::findOrFail($id);
+		$request->session()->put('last_user', $user['attributes']);
         $user->delete();
-        Session::flash('message',trans('home.messages.delete_user_suceed', ['name' => $user->name]));
-        return redirect()->route('admin.users.index');
+		Session::flash('message',trans('home.messages.delete_user_suceed', ['name' => $user->name]));
+		if ($request->ajax())
+		{
+			return session('message');
+		}
+		else{
+			Session::flash('message',trans('home.messages.delete_user_suceed', ['name' => $user->name]));
+			return redirect()->route('admin.users.index');
+		}
     }
+	public function cancelDestroy()
+	{
+		$user=User::withTrashed()->findOrFail(session('last_user')['id']);
+		if ($user->trashed()) {
+			$user->restore();
+		}
+		session()->forget('last_user');
+		Session::flash('message',trans('home.messages.restore_user_suceed', ['name' => $user->name]));
+		return $user;
+	}
 	public function usersAjax(Request $request)
 	{
 		if ($request->ajax())

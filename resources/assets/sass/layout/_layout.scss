@@ -2,7 +2,6 @@
 {
   min-height: 100%;
   height: 100%;
-  height: 100vh;
   .main-content
   {
     height: auto;
@@ -92,11 +91,24 @@
   }
   .messages-cancel
   {
-    @include transition(1s ease-in);
-    &:hover
+    z-index: 1;
+    @include into-xs()
     {
-      cursor:pointer;
-      color: red;
+      padding: 3px;
+      background-color: $success-notification;
+      border-color: $success-borde-notification;
+      color: $success-letter-color-notification;
+      @include border-radius(5px);
     }
+    @include into-sm-md-lg()
+    {
+      @include transition(1s ease-in);
+      &:hover
+      {
+        cursor:pointer;
+        color: red;
+      }
+    }
+
   }
 }

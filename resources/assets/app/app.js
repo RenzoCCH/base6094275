@@ -8,7 +8,7 @@ if(window.location.pathname == "/login" || window.location.pathname.startsWith('
 }
 if(window.location.pathname == "/admin/users")
 {
-  components = ['ui.grid','ui.grid.edit'];
+  components = ['ui.grid','ui.grid.edit','ui.grid.cellNav'];
 }
 ////////////////////////////////////////////ANGULAR////////////////////////////////////////////////////////
 var app = angular.module('app', components)

@@ -21,6 +21,6 @@ return [
 		'of' => 'of',
 		'users' =>'users',
 		'user_categories'=>'All,Administrator,User',
-		'grid_titles'=>'Name,Email,Rol',
+		'grid_titles'=>'Name,Email,Rol,Actions',
 	],
 ];
