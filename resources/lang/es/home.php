@@ -18,5 +18,6 @@ return [
         'create_button'=>'Crear',
         'delete_button'=>'Eliminar',
         'view_button'=>'Ver',
+		'cancel_button'=>'Cancelar',
     ]
 ];

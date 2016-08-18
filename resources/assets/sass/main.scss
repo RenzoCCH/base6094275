@@ -14,6 +14,7 @@
 @import "utilities/responsive__utilities";
 @import "utilities/animate";
 @import "utilities/reset";
+@import "utilities/form";
 
 //-------------for cross browser suport------------------------------
 $browser-minimum-versions: ("chrome": null, "firefox": "4", "ie": "7", "safari": "6");
@@ -36,5 +37,6 @@ html,body
 ///-------------------modules---------------------------------------
 @import "login/login";
 @import "admin/users-grid";
+@import "admin/edit-user";
 
 

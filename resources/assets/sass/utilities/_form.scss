@@ -1,0 +1,55 @@
+.form-group
+{
+  label
+  {
+    color: white;
+    padding-bottom: 15px;
+  }
+}
+ul[class*='form-list-']
+{
+  &.list-inline
+  {
+    margin-left: 0;
+  }
+  li
+  {
+    &:first-child
+    {
+      padding-left: 0;
+    }
+    &:last-child
+    {
+      padding-right: 0;
+    }
+  }
+  &.form-list-2
+  {
+    li{
+      width: 46%;
+      width: calc(50% + -2.3px);
+      vertical-align: middle;
+    }
+  }
+  &.form-list-3
+  {
+    @include into-xxs()
+    {
+      display:flex;
+      flex-direction:column-reverse;
+    }
+    li{
+
+      width: 30%;
+      width: calc(33% + -2px);
+      vertical-align: middle;
+      @include into-xxs()
+      {
+        width: 100%;
+        padding: 0;
+        margin-bottom: 15px;
+      }
+    }
+  }
+}
+

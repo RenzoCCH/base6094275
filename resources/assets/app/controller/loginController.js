@@ -52,10 +52,10 @@ app.controller('loginController', ['$scope', function($scope) {
              remote:
              {
                  type: "POST",
-                 url: 'register/emailverification',
+                 url: '/register/emailverification',
                  data: {
                      email: function() {
-                         return $( ".register-email" ).val();
+                       return $( ".register-email" ).val();
                      }
                  }
              }
@@ -69,7 +69,7 @@ app.controller('loginController', ['$scope', function($scope) {
             }
         },
         submitHandler: function(form) {
-            $('#register_button').attr('pressed',true);
+            $('#edit_button').attr('pressed',true);
             form.submit();
         }
     });

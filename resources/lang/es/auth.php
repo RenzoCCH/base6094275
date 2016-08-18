@@ -26,6 +26,10 @@ return [
     'edit_user'=>'Configuración',
 	'edit_profile'=>'Mi perfil',
     'edit_password'=>'Cambiar Contraseña',
+	'title' => [
+		'user_administration'=>'Administración de Usuarios',
+		'user_edition'=>'Edición de Usuario',
+	]
 ];
 
 

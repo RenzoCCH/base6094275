@@ -7,7 +7,8 @@
 	{!! Html::script('assets/js/modernizr.js')!!}
 	@if(Request::path()=='login' ||
 		Request::path()=='password/reset' ||
-		Request::path()=='user/edition'
+		Request::path()=='user/edition' ||
+		str_contains(Request::path(),'admin/users/')
 		)
 		{!! Html::script('bower_components/webcomponentsjs/webcomponents.js')!!}
 		<link rel="import" href="{{url()}}/elements/button-loading.html">
@@ -20,7 +21,8 @@
 @if(App::environment('production'))
 	@if(Request::path()=='login' ||
 		Request::path()=='password/reset' ||
-		Request::path()=='user/edition'
+		Request::path()=='user/edition' ||
+		str_contains(Request::path(),'admin/users/')
 		)
 		{!! Html::script('assets/dist/js/modernizerWebcomponents.min.js')!!}
 		<link rel="import" href="{{url()}}/elements/button-loading.html">

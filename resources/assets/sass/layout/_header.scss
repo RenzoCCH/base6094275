@@ -11,6 +11,14 @@
   {
     height: $header-height-small;
   }
+  .header-title
+  {
+    display: inline-block;
+    color: $letter-color;
+    vertical-align: super;
+    font-size: 1.2em;
+    padding: 10px;
+  }
 }
 .navbar-icon-container
 {

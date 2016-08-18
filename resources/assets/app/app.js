@@ -1,6 +1,6 @@
 ///////////////////////////////////////////LOCALIZATION///////////////////////////////////////////////////
 var components = [];
-if(window.location.pathname == "/login" || window.location.pathname.startsWith('/password'))
+if(window.location.pathname == "/login" || window.location.pathname.startsWith('/password') || window.location.pathname.startsWith('/admin/users/'))
 {
   $.validator.setDefaults({
     errorElement: 'span'

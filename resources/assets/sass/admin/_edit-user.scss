@@ -1,0 +1,15 @@
+.edit-buttons
+{
+  #edit_button
+  {
+    margin: auto;
+  }
+  &.loading
+  {
+    text-align: center;
+    #edit-button-delete, #edit-button-cancel
+    {
+      display: none;
+    }
+  }
+}

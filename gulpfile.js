@@ -2,7 +2,7 @@
 the js libraries are managed by two enviroments production and local
 if you wish to include local library just add it to headerLoader.blade.php or headerLoader.blade.php and run : gulp
 if you wish to include production library you need to add a header script task or a footer script task with the specific libraries that you need
-after that you should modify hederLoader.blade.php and footerLoader.blade.php
+after that you should modify hederLoader.blade.php and footerLoader.blade.php :gulp production
 */
 var gulp = require('gulp');
 var compass = require('gulp-compass');

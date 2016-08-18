@@ -18,7 +18,7 @@ class UserController extends Controller
 
     public function index()
     {
-        return view('admin.users.index');
+        return view('admin.users.index',['title'=>trans('auth.title.user_administration')]);
     }
     public function create()
     {
@@ -36,12 +36,14 @@ class UserController extends Controller
     {
         $user= User::findOrFail($id);
         $roles=Roles::lists('description', 'id');
-        return view('admin.users.edit',compact('user','roles'));
+		$roles[1]=trans('validation.attributes.administrator');
+		$roles[2]=trans('validation.attributes.user');
+        return view('admin.users.edit',compact('user','roles'),['title'=>trans('auth.title.user_edition')]);
     }
     public function update(EditUserRequest $request, $id)
     {
 		$user= User::findOrFail($id);
-		Session::flash('last_user', $user['attributes']);
+		$request->session()->put('last_user', $user['attributes']);
         $user->fill($request->all());
         $user->save();
 		Session::flash('message',trans('home.messages.edit_user_suceed', ['name' => $user->name]));
@@ -50,7 +52,8 @@ class UserController extends Controller
 			return session('message');
 		}
 		else{
-
+			Session::flash('message_cancel.cancel','/admin/users/cancelUpdate');
+			Session::flash('message_cancel.mode','warning');
 			return redirect()->route('admin.users.index');
 		}
     }
@@ -61,6 +64,7 @@ class UserController extends Controller
 		$user->email=session('last_user')['email'];
 		$user->roles_id=session('last_user')['roles_id'];
 		$user->save();
+		session()->forget('last_user');
 		Session::flash('message',trans('home.messages.restore_user_suceed', ['name' => $user->name]));
 		return session('last_user');
 	}
@@ -75,7 +79,8 @@ class UserController extends Controller
 			return session('message');
 		}
 		else{
-			Session::flash('message',trans('home.messages.delete_user_suceed', ['name' => $user->name]));
+			Session::flash('message_cancel.cancel','/admin/users/cancelDestroy');
+			Session::flash('message_cancel.mode','warning');
 			return redirect()->route('admin.users.index');
 		}
     }

@@ -66,10 +66,11 @@ app.controller('messagesController', ['$scope','$timeout',function ($scope,$time
   }
   function checkMessageFromPost()
   {
-    if($('#messageContent').html() != '')
+    if($('#messageContent').html().trim()!='')
     {
-      $scope.mode='success';
+      $scope.mode=$('#messageContent').attr('data-mode').trim();
       $scope.content=$('#messageContent').html();
+      $scope.cancel=$('#messageCancel').attr('data-cancel').trim();
       $scope.displayMessage();
     }
   }

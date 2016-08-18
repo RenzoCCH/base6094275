@@ -33,7 +33,7 @@ class AuthController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest', ['except' => 'getLogout']);
+        $this->middleware('guest', ['except' => ['getLogout','postEmailVerification']]);
     }
 
     /**
@@ -97,12 +97,13 @@ class AuthController extends Controller
 	public function postEmailVerification(Request $request)
 	{
 		if($request->ajax()) {
-			if (User::where('email', '=', Input::get('email'))->exists()) {
-				return 'false';
-			}
-			else{
-				return 'true';
-			}
+			$validatorOptions = 'required|email|max:255|unique:users,email'.($request->has('id')?','.$request->input('id'):'');
+
+			$validator = Validator::make($request->all(), [
+				'email' => $validatorOptions
+			]);
+			if ($validator->fails()) return 'false';
+			return 'true';
 		}
 		else return response('Unauthorized.', 401);
 	}

@@ -25,4 +25,8 @@ return [
     'edit_user'=>'Configuration',
     'edit_profile'=>'My profile',
     'edit_password'=>'Change Password',
+	'title' => [
+		'user_administration'=>'Users Administration',
+		'user_edition'=>'User Edition',
+	],
 ];

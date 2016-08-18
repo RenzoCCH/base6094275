@@ -9,4 +9,5 @@ return [
     'message_no_records' => 'No se encontraron registros.',
     'message_no_connection' => 'Lo sentimos, no podemos conenctarnos con el servidor.',
     'message_no_empty' => ' no puede ser un campo vacio...',
+	'message_no_modifications' => 'No hay cambios..'
 ];

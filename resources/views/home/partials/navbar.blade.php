@@ -2,13 +2,14 @@
   <figure class="logo-container">
       <img src="/img/logo_title.png" alt=""/>
   </figure>
-	  {{--@can('isphone')--}}
+  @if(isset($title))
+    <h1 class="header-title">{{$title}}</h1>
+  @endif
   <button class="reset-button float-right icon-item icon-menu-small visible-xs" ng-controller="smallNavBarController" background-constrant>
       <figure class="icon-circle">
         <span class="fontello fontello-menu" aria-hidden="true"></span>
       </figure>
   </button>
-  {{--@endcan--}}
   <ul class="navbar-icon-container icon-container">
     @cannot('home')
     <li class="icon-item">

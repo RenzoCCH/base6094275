@@ -6,6 +6,7 @@
 	{!! Html::script('bower_components/angular/angular.js')!!}
 	@if(Request::path()=='login' ||
 		  Request::path()=='password/reset' ||
+		  str_contains(Request::path(),'admin/users/') ||
 		  Request::path()=='user/edition'
 		  )
 		{!! Html::script('bower_components/jquery-validation/dist/jquery.validate.js')!!}
@@ -21,6 +22,7 @@
 @if(App::environment('production'))
 	@if(Request::path()=='login' ||
 		  Request::path()=='password/reset' ||
+		  str_contains(Request::path(),'admin/users/') ||
 		  Request::path()=='user/edition'
 		  )
 		{!! Html::script('assets/dist/js/AngularJqueryValidate.min.js')!!}

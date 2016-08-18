@@ -1,4 +1,4 @@
-app.controller('userGridController', ['$scope','$http','message','ismobile',function ($scope,$http,message,ismobile) {
+app.controller('userGridController', ['$scope','$http','message','ismobile','$window',function ($scope,$http,message,ismobile,$window) {
   $scope.myData = [];
   $scope.advancedSearchActive = false;
   $scope.userRoles = [{id:0,value:'All'}];
@@ -58,7 +58,7 @@ app.controller('userGridController', ['$scope','$http','message','ismobile',func
 
   //--------------------------------methods
   $scope.editUser = function (id) {
-    console.log(id);
+    $window.location.href='/admin/users/'+id+'/edit';
   }
   $scope.deleteUser = function (id) {
     $http({

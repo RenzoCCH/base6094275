@@ -5,10 +5,10 @@
   .main-content
   {
     height: auto;
-    height: calc(100% - #{$header-height + $header-margin-bottom});
+    height: calc(100vh - #{$header-height + $header-margin-bottom});
     @include into-xs()
     {
-      height: calc(100% - #{$header-height-small  + $header-margin-bottom});
+      height: calc(100vh - #{$header-height-small  + $header-margin-bottom});
     }
   }
 }
